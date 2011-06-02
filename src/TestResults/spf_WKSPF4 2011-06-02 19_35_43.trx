@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e8a7f663-eae4-4e1e-bf36-7638fc485041" name="spf@WKSPF4 2011-06-02 19:35:43" runUser="ASCORP\spf" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="20974c45-1e60-482e-9f13-c57dd131062d">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="spf_WKSPF4 2011-06-02 19_35_43">
+      <DeploymentItem filename="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments\bin\Debug\Mod02-AdvProgramming.Assignments.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-06-02T19:35:43.5341718+01:00" queuing="2011-06-02T19:35:43.5497719+01:00" start="2011-06-02T19:35:43.5497719+01:00" finish="2011-06-02T19:35:43.8617724+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestMethod3" storage="c:\spf\prompt11\uc02\prompt11-02-advancedprogramming.sandrapatfer\src\mod02-advprogramming.assignments.tests2\bin\debug\mod02-advprogramming.assignments.tests2.dll" id="eead056e-4065-efea-35f5-ca8cc3a4e559">
+      <Execution id="8d8608bf-8512-4205-9b05-8c66901475ab" />
+      <TestMethod codeBase="C:/SPF/prompt11/uc02/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/Mod02-AdvProgramming.Assignments.Tests2/bin/Debug/Mod02-AdvProgramming.Assignments.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Mod02_AdvProgramming.Assignments.Tests2.Ex6Tests, Mod02-AdvProgramming.Assignments.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod3" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="eead056e-4065-efea-35f5-ca8cc3a4e559" executionId="8d8608bf-8512-4205-9b05-8c66901475ab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="8d8608bf-8512-4205-9b05-8c66901475ab" testId="eead056e-4065-efea-35f5-ca8cc3a4e559" testName="TestMethod3" computerName="WKSPF4" duration="00:00:00.0219601" startTime="2011-06-02T19:35:43.5497719+01:00" endTime="2011-06-02T19:35:43.8461724+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8d8608bf-8512-4205-9b05-8c66901475ab">
+    </UnitTestResult>
+  </Results>
+</TestRun>

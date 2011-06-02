@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="972b96cc-2ef8-4eb0-b0e2-5d2e88f73141" name="spf@WKSPF4 2011-06-02 18:39:32" runUser="ASCORP\spf" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="20974c45-1e60-482e-9f13-c57dd131062d">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="spf_WKSPF4 2011-06-02 18_39_32">
+      <DeploymentItem filename="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments\bin\Debug\Mod02-AdvProgramming.Assignments.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-06-02T18:39:32.2773235+01:00" queuing="2011-06-02T18:39:32.9793412+01:00" start="2011-06-02T18:39:33.0668426+01:00" finish="2011-06-02T18:39:33.6568516+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" error="0" failed="3" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="CountRepeatedShouldReturnAnEmptySequenceForANullSequence" storage="c:\spf\prompt11\uc02\prompt11-02-advancedprogramming.sandrapatfer\src\mod02-advprogramming.assignments.tests2\bin\debug\mod02-advprogramming.assignments.tests2.dll" id="f4035898-027d-d88f-0034-cebeeda9b6af">
+      <Execution id="20c7b3a2-ec51-419e-845c-d1f6ecbf9f03" />
+      <TestMethod codeBase="C:/SPF/prompt11/uc02/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/Mod02-AdvProgramming.Assignments.Tests2/bin/Debug/Mod02-AdvProgramming.Assignments.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Mod02_AdvProgramming.Assignments.Tests.Ex4Tests, Mod02-AdvProgramming.Assignments.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CountRepeatedShouldReturnAnEmptySequenceForANullSequence" />
+    </UnitTest>
+    <UnitTest name="CountRepeatedShouldReturnAnEmptySequenceWhenThereAreNoRepeatedElements" storage="c:\spf\prompt11\uc02\prompt11-02-advancedprogramming.sandrapatfer\src\mod02-advprogramming.assignments.tests2\bin\debug\mod02-advprogramming.assignments.tests2.dll" id="d1f71055-12b2-c0c7-b71a-1562ebd5ff00">
+      <Execution id="4dfbd67e-26d0-4e91-ac7e-695d15324395" />
+      <TestMethod codeBase="C:/SPF/prompt11/uc02/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/Mod02-AdvProgramming.Assignments.Tests2/bin/Debug/Mod02-AdvProgramming.Assignments.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Mod02_AdvProgramming.Assignments.Tests.Ex4Tests, Mod02-AdvProgramming.Assignments.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CountRepeatedShouldReturnAnEmptySequenceWhenThereAreNoRepeatedElements" />
+    </UnitTest>
+    <UnitTest name="CountRepeatedShouldReturnAPairSequenceWhenThereAreRepeatedElements" storage="c:\spf\prompt11\uc02\prompt11-02-advancedprogramming.sandrapatfer\src\mod02-advprogramming.assignments.tests2\bin\debug\mod02-advprogramming.assignments.tests2.dll" id="163d4dfa-99af-4bfb-0f0c-0245906019eb">
+      <Execution id="fc22a5fe-e6b4-4eb2-a31e-b2cc0cb978ef" />
+      <TestMethod codeBase="C:/SPF/prompt11/uc02/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/Mod02-AdvProgramming.Assignments.Tests2/bin/Debug/Mod02-AdvProgramming.Assignments.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Mod02_AdvProgramming.Assignments.Tests.Ex4Tests, Mod02-AdvProgramming.Assignments.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CountRepeatedShouldReturnAPairSequenceWhenThereAreRepeatedElements" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="163d4dfa-99af-4bfb-0f0c-0245906019eb" executionId="fc22a5fe-e6b4-4eb2-a31e-b2cc0cb978ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1f71055-12b2-c0c7-b71a-1562ebd5ff00" executionId="4dfbd67e-26d0-4e91-ac7e-695d15324395" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f4035898-027d-d88f-0034-cebeeda9b6af" executionId="20c7b3a2-ec51-419e-845c-d1f6ecbf9f03" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="fc22a5fe-e6b4-4eb2-a31e-b2cc0cb978ef" testId="163d4dfa-99af-4bfb-0f0c-0245906019eb" testName="CountRepeatedShouldReturnAPairSequenceWhenThereAreRepeatedElements" computerName="WKSPF4" duration="00:00:00.0846137" startTime="2011-06-02T18:39:33.0793428+01:00" endTime="2011-06-02T18:39:33.5593502+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fc22a5fe-e6b4-4eb2-a31e-b2cc0cb978ef">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Mod02_AdvProgramming.Assignments.Tests.Ex4Tests.CountRepeatedShouldReturnAPairSequenceWhenThereAreRepeatedElements threw exception: 
+System.NotImplementedException: The method or operation is not implemented.</Message>
+          <StackTrace>    at Mod02_AdvProgramming.Assignments.Ex4.CountRepeated[T](IEnumerable`1 seq) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments\Ex4.cs:line 19
+   at Mod02_AdvProgramming.Assignments.Tests.Ex4Tests.CountRepeatedShouldReturnAPairSequenceWhenThereAreRepeatedElements() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments.Tests2\Ex4Tests.cs:line 15
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4dfbd67e-26d0-4e91-ac7e-695d15324395" testId="d1f71055-12b2-c0c7-b71a-1562ebd5ff00" testName="CountRepeatedShouldReturnAnEmptySequenceWhenThereAreNoRepeatedElements" computerName="WKSPF4" duration="00:00:00.0026510" startTime="2011-06-02T18:39:33.5618502+01:00" endTime="2011-06-02T18:39:33.5693503+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4dfbd67e-26d0-4e91-ac7e-695d15324395">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Mod02_AdvProgramming.Assignments.Tests.Ex4Tests.CountRepeatedShouldReturnAnEmptySequenceWhenThereAreNoRepeatedElements threw exception: 
+System.NotImplementedException: The method or operation is not implemented.</Message>
+          <StackTrace>    at Mod02_AdvProgramming.Assignments.Ex4.CountRepeated[T](IEnumerable`1 seq) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments\Ex4.cs:line 19
+   at Mod02_AdvProgramming.Assignments.Tests.Ex4Tests.CountRepeatedShouldReturnAnEmptySequenceWhenThereAreNoRepeatedElements() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments.Tests2\Ex4Tests.cs:line 28
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="20c7b3a2-ec51-419e-845c-d1f6ecbf9f03" testId="f4035898-027d-d88f-0034-cebeeda9b6af" testName="CountRepeatedShouldReturnAnEmptySequenceForANullSequence" computerName="WKSPF4" duration="00:00:00.0017430" startTime="2011-06-02T18:39:33.5718503+01:00" endTime="2011-06-02T18:39:33.5768504+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="20c7b3a2-ec51-419e-845c-d1f6ecbf9f03">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Mod02_AdvProgramming.Assignments.Tests.Ex4Tests.CountRepeatedShouldReturnAnEmptySequenceForANullSequence threw exception: 
+System.NotImplementedException: The method or operation is not implemented.</Message>
+          <StackTrace>    at Mod02_AdvProgramming.Assignments.Ex4.CountRepeated[T](IEnumerable`1 seq) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments\Ex4.cs:line 19
+   at Mod02_AdvProgramming.Assignments.Tests.Ex4Tests.CountRepeatedShouldReturnAnEmptySequenceForANullSequence() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments.Tests2\Ex4Tests.cs:line 41
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
