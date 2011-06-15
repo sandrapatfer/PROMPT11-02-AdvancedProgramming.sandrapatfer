@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\FinalWork.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-06-15" time="22:53:02">
+  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.4959" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming\src\packages\NUnit.2.5.10.11092\tools" machine-name="WKSPF4" user="spf" user-domain="ASCORP" />
+  <culture-info current-culture="pt-PT" current-uiculture="pt-PT" />
+  <test-suite type="Project" name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\FinalWork.nunit" executed="True" result="Success" success="True" time="0.061" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\bin\Debug\ChelasInjection.Tests.dll" executed="True" result="Success" success="True" time="0.056" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="ChelasInjection" executed="True" result="Success" success="True" time="0.055" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.055" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="ChelasInjectionTests" executed="True" result="Success" success="True" time="0.054" asserts="0">
+                    <results>
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeClass4InstanceForSomeClass4Request" executed="True" result="Success" success="True" time="0.011" asserts="1" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

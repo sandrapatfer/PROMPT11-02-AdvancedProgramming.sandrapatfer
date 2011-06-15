@@ -102,15 +102,6 @@ namespace Mod02_AdvProgramming.Assignments
                     Country = gc.Key,
                     PeriodRange = g.Key
                 }));
-
-            //return list.GroupBy(c => c.Country).SelectMany(gc => gc.SelectMany(c => c.Orders, (c, o) => new { CustName = c.Name, Order = o }).
-            //    GroupBy(o => ConvertDateToPeriod(o.Order.OrderDate, periodRange)).
-            //    Select(g => new TotalsByCountryByPeriod
-            //    {
-            //        NumCustomers = g.Select(co => co.CustName).Distinct().Count(),
-            //        TotalSales = g.Sum(o => o.Order.Total),
-            //        Country = gc.Key
-            //    }));
         }
 
     }

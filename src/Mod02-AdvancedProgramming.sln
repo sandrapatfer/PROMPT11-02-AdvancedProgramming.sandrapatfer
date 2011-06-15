@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoAlbum", "PhotoAlbum", "{67968CB3-B21C-4279-BEDC-8B235E789A77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mod02-AdvProgramming.PhotoAlbums", "Mod02-AdvProgramming.PhotoAlbums\Mod02-AdvProgramming.PhotoAlbums.csproj", "{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Mod02-AdvancedProgramming.vsmdi
@@ -101,6 +105,16 @@ Global
 		{56847933-16E5-40B9-B6D9-C47CD6C6E137}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{56847933-16E5-40B9-B6D9-C47CD6C6E137}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{56847933-16E5-40B9-B6D9-C47CD6C6E137}.Release|x86.ActiveCfg = Release|Any CPU
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Debug|x86.ActiveCfg = Debug|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Debug|x86.Build.0 = Debug|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Release|Any CPU.ActiveCfg = Release|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Release|x86.ActiveCfg = Release|x86
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,5 +129,6 @@ Global
 		{22112689-6E23-49CE-906E-2E5E92EDDF45} = {7A1188A5-08E5-4637-BD74-BBC32518717C}
 		{56847933-16E5-40B9-B6D9-C47CD6C6E137} = {7A1188A5-08E5-4637-BD74-BBC32518717C}
 		{EF69E84C-BE8A-4051-93FF-47EB0C1850ED} = {7A1188A5-08E5-4637-BD74-BBC32518717C}
+		{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A} = {67968CB3-B21C-4279-BEDC-8B235E789A77}
 	EndGlobalSection
 EndGlobal

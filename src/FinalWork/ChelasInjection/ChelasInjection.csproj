@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{22112689-6E23-49CE-906E-2E5E92EDDF45}</ProjectGuid>
+    <ProjectGuid>{6666CD41-C05E-43B4-B43E-B41B5871E8DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mod02_AdvProgramming.Assignments</RootNamespace>
-    <AssemblyName>Mod02-AdvProgramming.Assignments</AssemblyName>
+    <RootNamespace>ChelasInjection</RootNamespace>
+    <AssemblyName>ChelasInjection</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,33 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ex4.cs" />
-    <Compile Include="Ex5.cs" />
-    <Compile Include="Ex3.cs" />
-    <Compile Include="Ex2.cs" />
-    <Compile Include="Ex6.cs" />
+    <Compile Include="BaseTypeConfig.cs" />
+    <Compile Include="Binder.cs" />
+    <Compile Include="DefaultConstructorAttribute.cs" />
+    <Compile Include="Exceptions\CircularDependencyException.cs" />
+    <Compile Include="Exceptions\DIChelasException.cs" />
+    <Compile Include="Exceptions\UnboundTypeException.cs" />
+    <Compile Include="IActivationBinder.cs" />
+    <Compile Include="IConstructorBinder.cs" />
+    <Compile Include="Injector.cs" />
+    <Compile Include="InstanceManager.cs" />
+    <Compile Include="ITypeBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ex1.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Mod02-AdvProgramming.Data\Mod02-AdvProgramming.Data.csproj">
-      <Project>{2FA7C253-8566-4A64-9785-30AD69AC134E}</Project>
-      <Name>Mod02-AdvProgramming.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Template.html" />
+    <Compile Include="TypeConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

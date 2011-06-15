@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{22112689-6E23-49CE-906E-2E5E92EDDF45}</ProjectGuid>
+    <ProjectGuid>{03A2C558-4A36-4B14-AD60-190FAF5AE27B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mod02_AdvProgramming.Assignments</RootNamespace>
-    <AssemblyName>Mod02-AdvProgramming.Assignments</AssemblyName>
+    <RootNamespace>ChelasInjection.Tests</RootNamespace>
+    <AssemblyName>ChelasInjection.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PROMPT11-02-AdvancedProgramming\src\Mod02-FinalWork\packages\NUnit.2.5.10.11092\tools\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PROMPT11-02-AdvancedProgramming\src\Mod02-FinalWork\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\..\..\..\PROMPT11-02-AdvancedProgramming\src\Mod02-FinalWork\packages\NUnit.2.5.10.11092\tools\pnunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,33 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ex4.cs" />
-    <Compile Include="Ex5.cs" />
-    <Compile Include="Ex3.cs" />
-    <Compile Include="Ex2.cs" />
-    <Compile Include="Ex6.cs" />
+    <Compile Include="ChelasInjectionTests.cs" />
+    <Compile Include="MyBinder.cs" />
+    <Compile Include="MyCustomResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ex1.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mod02-AdvProgramming.Data\Mod02-AdvProgramming.Data.csproj">
-      <Project>{2FA7C253-8566-4A64-9785-30AD69AC134E}</Project>
-      <Name>Mod02-AdvProgramming.Data</Name>
+    <ProjectReference Include="..\ChelasInjection.SampleTypes\ChelasInjection.SampleTypes.csproj">
+      <Project>{0A9F133C-457E-4A47-A615-59ACB5C970F9}</Project>
+      <Name>ChelasInjection.SampleTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChelasInjection\ChelasInjection.csproj">
+      <Project>{6666CD41-C05E-43B4-B43E-B41B5871E8DB}</Project>
+      <Name>ChelasInjection</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Template.html" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

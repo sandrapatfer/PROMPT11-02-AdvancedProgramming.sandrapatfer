@@ -2,18 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{22112689-6E23-49CE-906E-2E5E92EDDF45}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{61DD1584-1FC4-4CAF-ACF6-417C12EEB18A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mod02_AdvProgramming.Assignments</RootNamespace>
-    <AssemblyName>Mod02-AdvProgramming.Assignments</AssemblyName>
+    <RootNamespace>Mod02_AdvProgramming.PhotoAlbums</RootNamespace>
+    <AssemblyName>Mod02-AdvProgramming.PhotoAlbums</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,13 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ex4.cs" />
-    <Compile Include="Ex5.cs" />
-    <Compile Include="Ex3.cs" />
-    <Compile Include="Ex2.cs" />
-    <Compile Include="Ex6.cs" />
+    <Compile Include="ImagesSequence.cs" />
+    <Compile Include="DirectoryEnumerator.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ex1.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -54,19 +54,38 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mod02-AdvProgramming.Data\Mod02-AdvProgramming.Data.csproj">
-      <Project>{2FA7C253-8566-4A64-9785-30AD69AC134E}</Project>
-      <Name>Mod02-AdvProgramming.Data</Name>
-    </ProjectReference>
+    <Content Include="HtmlSample\css\closelabel.gif" />
+    <Content Include="HtmlSample\css\loading.gif" />
+    <Content Include="HtmlSample\css\nextlabel.gif" />
+    <Content Include="HtmlSample\css\prevlabel.gif" />
+    <Content Include="HtmlSample\css\slimbox2-rtl.css" />
+    <Content Include="HtmlSample\css\slimbox2.css" />
+    <Content Include="HtmlSample\example.html" />
+    <Content Include="HtmlSample\js\slimbox2.js" />
+    <Content Include="HtmlSample\pictures\Figure01.jpg" />
+    <Content Include="HtmlSample\pictures\Figure02.jpg" />
+    <Content Include="HtmlSample\pictures\Figure03.jpg" />
+    <Content Include="HtmlSample\pictures\Figure04.jpg" />
+    <Content Include="HtmlSample\pictures\Figure05.jpg" />
+    <Content Include="HtmlSample\pictures\Figure06.jpg" />
+    <Content Include="HtmlSample\pictures\Figure07.jpg" />
+    <Content Include="HtmlSample\pictures\Figure08.jpg" />
+    <Content Include="HtmlSample\pictures\Figure09.jpg" />
+    <Content Include="HtmlSample\pictures\Figure10.jpg" />
+    <Content Include="HtmlSample\pictures\Figure11.jpg" />
+    <Content Include="HtmlSample\pictures\Figure12.jpg" />
+    <Content Include="HtmlSample\pictures\Figure13.jpg" />
+    <Content Include="HtmlSample\pictures\Figure14.jpg" />
+    <Content Include="HtmlSample\pictures\Figure15.jpg" />
+    <Content Include="HtmlSample\pictures\Figure16.jpg" />
+    <Content Include="HtmlSample\pictures\Figure17.jpg" />
+    <None Include="Template.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Template.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

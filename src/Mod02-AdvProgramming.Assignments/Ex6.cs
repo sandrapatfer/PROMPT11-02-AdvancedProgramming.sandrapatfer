@@ -60,5 +60,53 @@ namespace Mod02_AdvProgramming.Assignments
             }
             return match;
         }
+
+        public static IEnumerable<T> MyTake<T>(this IEnumerable<T> list, int nElems)
+        {
+            int nReturned = 0;
+            foreach (var t in list)
+            {
+                if (nReturned < nElems)
+                {
+                    nReturned++;
+                    yield return t;
+                }
+            }
+        }
+        
+        public static IEnumerable<R> MyZip<T, U, R>(this IEnumerable<T> list, IEnumerable<U> other, Func<T, U, R> conv)
+        {
+            var enumT = list.GetEnumerator();
+            var enumU = other.GetEnumerator();
+            
+            while(enumT.MoveNext() && enumU.MoveNext())
+            {
+                yield return conv(enumT.Current, enumU.Current);
+            }
+        }
+
+        public static T MyAggregate<T>(this IEnumerable<T> list, Func<T, T, T> aggregator)
+        {
+            T total = default(T);
+            foreach (var t in list)
+            {
+                total = aggregator(total, t);
+            }
+            return total;
+        }
+
+        public static IEnumerable<R> MyJoin<T, U, K, R>(this IEnumerable<T> list, IEnumerable<U> other, Func<T, K> keyT, Func<U, K> keyU, Func<T, U, R> conv)
+        {
+            var enumT = list.GetEnumerator();
+            while (enumT.MoveNext())
+            {
+                var enumU = other.GetEnumerator();
+                while (enumU.MoveNext())
+                {
+                    if (keyT(enumT.Current).GetHashCode() == keyU(enumU.Current).GetHashCode())
+                        yield return conv(enumT.Current, enumU.Current);
+                }
+            }
+        }
     }
 }

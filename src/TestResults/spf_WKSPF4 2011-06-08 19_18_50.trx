@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="8face886-8585-488b-8d9f-246793b08fd0" name="spf@WKSPF4 2011-06-08 19:18:50" runUser="ASCORP\spf" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="20974c45-1e60-482e-9f13-c57dd131062d">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="spf_WKSPF4 2011-06-08 19_18_50">
+      <DeploymentItem filename="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments\bin\Debug\Mod02-AdvProgramming.Assignments.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-06-08T19:18:50.7414575+01:00" queuing="2011-06-08T19:18:50.7734593+01:00" start="2011-06-08T19:18:50.8064612+01:00" finish="2011-06-08T19:18:51.4214963+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestMyJoin" storage="c:\spf\prompt11\uc02\prompt11-02-advancedprogramming.sandrapatfer\src\mod02-advprogramming.assignments.tests2\bin\debug\mod02-advprogramming.assignments.tests2.dll" id="b2555807-92f9-0b3e-3c25-bb50afa049e7">
+      <Execution id="c0161f68-3dc2-47aa-ac2d-80376c72faba" />
+      <TestMethod codeBase="C:/SPF/prompt11/uc02/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/Mod02-AdvProgramming.Assignments.Tests2/bin/Debug/Mod02-AdvProgramming.Assignments.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Mod02_AdvProgramming.Assignments.Tests2.Ex6Tests, Mod02-AdvProgramming.Assignments.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMyJoin" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="b2555807-92f9-0b3e-3c25-bb50afa049e7" executionId="c0161f68-3dc2-47aa-ac2d-80376c72faba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="c0161f68-3dc2-47aa-ac2d-80376c72faba" testId="b2555807-92f9-0b3e-3c25-bb50afa049e7" testName="TestMyJoin" computerName="WKSPF4" duration="00:00:00.0391713" startTime="2011-06-08T19:18:50.7904603+01:00" endTime="2011-06-08T19:18:51.0494751+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c0161f68-3dc2-47aa-ac2d-80376c72faba">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;Hedlund&gt;. Actual:&lt;Hedlund, Magnus&gt;. </Message>
+          <StackTrace>   at Mod02_AdvProgramming.Assignments.Tests2.Ex6Tests.TestMyJoin() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\Mod02-AdvProgramming.Assignments.Tests2\Ex6Tests.cs:line 125
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
