@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChelasInjection
 {
@@ -13,8 +14,6 @@ namespace ChelasInjection
         }
 
         protected abstract void InternalConfigure();
-
-        public event ResolverHandler CustomResolver;
 
         Dictionary<Type, BaseTypeConfig> m_bindingTypes = new Dictionary<Type,BaseTypeConfig>();
 
@@ -50,11 +49,11 @@ namespace ChelasInjection
             return tConfig;
         }
 
-        internal BaseTypeConfig GetTargetType(Type sType)
+        internal BaseTypeConfig GetTargetType(Type tType)
         {
-            if (m_bindingTypes.ContainsKey(sType))
+            if (m_bindingTypes.ContainsKey(tType))
             {
-                return m_bindingTypes[sType];
+                return m_bindingTypes[tType];
             }
             else
             {
@@ -62,5 +61,18 @@ namespace ChelasInjection
             }
         }
 
+        public event ResolverHandler CustomResolver;
+
+        public object ResolveType(Type tType)
+        {
+            if (CustomResolver != null)
+            {
+                return CustomResolver.GetInvocationList().ReturnFirstNotNull(d => ((ResolverHandler)d)(this, tType));
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

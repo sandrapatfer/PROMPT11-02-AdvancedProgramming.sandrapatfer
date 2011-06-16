@@ -10,36 +10,64 @@ namespace ChelasInjection
     {
         class InstanceManager
         {
-            private Binder m_Binder;
+            private Binder m_binder;
             private List<Type> m_typeContructionPath = new List<Type>();
             private Dictionary<Type, object> m_singletonList = new Dictionary<Type, object>();
+            private Dictionary<Type, object> m_currentCallObjectList;
 
             public InstanceManager(Binder binder)
             {
-                this.m_Binder = binder;
+                this.m_binder = binder;
             }
 
             internal T GetInstance<T>()
             {
+                m_currentCallObjectList = new Dictionary<Type, object>();
                 return (T)GetInstance(typeof(T));
             }
 
             internal object GetInstance(Type tType)
             {
-                Binder.BaseTypeConfig cTarget = m_Binder.GetTargetType(tType);
+                // a type already created is always returned
+                if (m_currentCallObjectList.ContainsKey(tType))
+                    return m_currentCallObjectList[tType];
+
+                // a type configured as singleton always returns the same type, independently of the configuration
+                Binder.BaseTypeConfig cTarget = m_binder.GetTargetType(tType);
+                if (cTarget != null && cTarget.ActivationSingleton)
+                {
+                    if (m_singletonList.ContainsKey(tType))
+                    {
+                        return m_singletonList[tType];
+                    }
+                }
+
+                object resolvedObject = m_binder.ResolveType(tType);
+                if (resolvedObject != null)
+                {
+                    CheckConfigForObject(tType, resolvedObject);
+                }
+                else
+                {
+                    resolvedObject = GetInstanceFromConfig(tType);
+                }
+                m_currentCallObjectList.Add(tType, resolvedObject);
+                return resolvedObject;
+            }
+
+            internal object GetInstanceFromConfig(Type tType)
+            {
+                Binder.BaseTypeConfig cTarget = m_binder.GetTargetType(tType);
                 if (cTarget == null)
                 {
-                    ConstructorInfo constructor = FindConstructorWithMoreBindedObjects(tType);
+                    ConstructorInfo constructor = FindConstructor(tType);
                     if (constructor == null)
                     {
                         throw new Exceptions.UnboundTypeException();
                     }
                     else
                     {
-                        AddType(tType);
-                        object obj = CreateObjectWithConstructor(constructor);
-                        RemoveType(tType);
-                        return obj;
+                        return ProtectObjectCreation(tType, ()=>CreateObjectWithConstructor(constructor, c => null), null);
                     }
                 }
                 else if (cTarget.ActivationSingleton)
@@ -50,24 +78,16 @@ namespace ChelasInjection
                     }
                     else
                     {
-                        AddType(tType);
-                        object obj = CreateObject(cTarget);
-                        m_singletonList.Add(tType, obj);
-                        RemoveType(tType);
-                        return obj;
-
+                        return ProtectObjectCreation(tType, ()=> CreateObject(cTarget), obj => m_singletonList.Add(tType, obj));
                     }
                 }
                 else
                 {
-                    AddType(tType);
-                    object obj = CreateObject(cTarget);
-                    RemoveType(tType);
-                    return obj;
+                    return ProtectObjectCreation(tType, ()=>CreateObject(cTarget), null);
                 }
             }
 
-            private void AddType(Type tType)
+            private object ProtectObjectCreation(Type tType, Func<object> creationFunc, Action<object> additionalAction)
             {
                 if (m_typeContructionPath.Exists(t => t == tType))
                 {
@@ -77,10 +97,14 @@ namespace ChelasInjection
                 {
                     m_typeContructionPath.Add(tType);
                 }
-            }
-            private void RemoveType(Type tType)
-            {
+
+                object obj = creationFunc();
+                if (additionalAction != null)
+                    additionalAction(obj);
+
                 m_typeContructionPath.Remove(tType);
+                
+                return obj;
             }
 
             private object CreateObject(Binder.BaseTypeConfig cTarget)
@@ -89,35 +113,43 @@ namespace ChelasInjection
                 {
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.NoArguments:
                         {
-                            var constructor = cTarget.TargetType.GetConstructor(Type.EmptyTypes);
-                            // TODO check if exists
-                            return constructor.Invoke(null);
+                            return CreateObjectWithConstructor(cTarget.TargetType.GetConstructor(Type.EmptyTypes), constructor => null);
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.Values:
                         {
-                            var constructor = cTarget.TargetType.GetConstructor(cTarget.ConstructorArguments);
-                            // TODO check if exists
-                            var args = new object[cTarget.ConstructorArguments.Length];
-                            var values = cTarget.ConstructorValues();
-                            var valuesObjectProperties = values.GetType().GetProperties();
-                            foreach (var arg in cTarget.ConstructorArguments)
-                            {
-                            }
-                            return constructor.Invoke(args);
+                            return CreateObjectWithConstructor(cTarget.TargetType.GetConstructor(cTarget.ConstructorArguments),
+                                constructor => CreateArguments(constructor, cTarget.ConstructorValues()));
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.Action:
                         {
-                            var obj = CreateObjectWithConstructor(FindConstructorWithMoreBindedObjects(cTarget.TargetType));
-                            cTarget.ConstructorAction.Invoke(obj);
+                            var obj = CreateObjectWithConstructor(FindConstructor(cTarget.TargetType),
+                                constructor => constructor.GetParameters().Select(p => GetInstance(p.ParameterType)).ToArray());
+                            cTarget.ConstructorAction(obj);
                             return obj;
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.NoValue:
                         {
-                            return CreateObjectWithConstructor(FindConstructorWithMoreBindedObjects(cTarget.TargetType));
+                            return CreateObjectWithConstructor(FindConstructor(cTarget.TargetType),
+                                constructor => constructor.GetParameters().Select(p => GetInstance(p.ParameterType)).ToArray());
                         }
                     default:
                         throw new ArgumentException("Unexpected value in Binder.BaseTypeConfig.ConstructorTypeConfig");
                 }
+            }
+
+            private ConstructorInfo FindConstructor(Type objectType)
+            {
+                var constructor = FindConstructorMarkedWithDefaultAttr(objectType);
+                if (constructor == null)
+                {
+                    constructor = FindConstructorWithMoreBindedObjects(objectType);
+                }
+                return constructor;
+            }
+
+            private ConstructorInfo FindConstructorMarkedWithDefaultAttr(Type objectType)
+            {
+                return objectType.GetConstructors().FirstWhere(c => c.GetCustomAttributes(typeof(DefaultConstructorAttribute), false).Length == 1);
             }
 
             private ConstructorInfo FindConstructorWithMoreBindedObjects(Type objectType)
@@ -129,7 +161,7 @@ namespace ChelasInjection
                     int NBindedAttrs = 0;
                     foreach (var param in constructor.GetParameters())
                     {
-                        if (m_Binder.GetTargetType(param.ParameterType) != null)
+                        if (m_binder.GetTargetType(param.ParameterType) != null)
                         {
                             NBindedAttrs++;
                         }
@@ -149,14 +181,46 @@ namespace ChelasInjection
                 return chosenConstructor;
             }
 
-            private object CreateObjectWithConstructor(ConstructorInfo constructor)
+            private object CreateObjectWithConstructor(ConstructorInfo constructor, Func<ConstructorInfo, object[]> parameters)
             {
-                var args = new List<object>();
-                foreach (var param in constructor.GetParameters())
+                if (constructor == null)
+                    throw new Exceptions.MissingAppropriateConstructorException();
+                return constructor.Invoke(parameters(constructor));
+            }
+            
+            private object[] CreateArguments(ConstructorInfo constructor, object constructorValuesObject)
+            {
+                return constructor.GetParameters().Select(p => CreateParameterObject(p, constructorValuesObject)).ToArray();
+            }
+
+            private object CreateParameterObject(ParameterInfo param, object constructorValuesObject)
+            {
+                var valuesObjectProperties = constructorValuesObject.GetType().GetProperties();
+                var paramProperty = valuesObjectProperties.FirstWhere(p => p.PropertyType == param.ParameterType);
+                if (paramProperty != null)
                 {
-                    args.Add(GetInstance(param.ParameterType));
+                    return paramProperty.GetValue(constructorValuesObject, null);
                 }
-                return constructor.Invoke(args.ToArray());
+                else
+                {
+                    return GetInstance(param.ParameterType);
+                }
+            }
+
+            private void CheckConfigForObject(Type tType, object resolvedObject)
+            {
+                Binder.BaseTypeConfig cTarget = m_binder.GetTargetType(tType);
+                if (cTarget == null)
+                    return;
+                if (cTarget.ActivationSingleton)
+                {
+                    m_singletonList.Add(tType, resolvedObject);
+                }
+
+                if (cTarget.ConstructorType == Binder.BaseTypeConfig.ConstructorTypeConfig.Action)
+                {
+                    cTarget.ConstructorAction(resolvedObject);
+                }
             }
         }
     }

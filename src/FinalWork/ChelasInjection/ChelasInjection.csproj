@@ -45,6 +45,7 @@
     <Compile Include="DefaultConstructorAttribute.cs" />
     <Compile Include="Exceptions\ChelasInjectionException.cs" />
     <Compile Include="Exceptions\CircularDependencyException.cs" />
+    <Compile Include="Exceptions\MissingAppropriateConstructorException.cs" />
     <Compile Include="Exceptions\DuplicateConfigurationException.cs" />
     <Compile Include="Exceptions\UnboundTypeException.cs" />
     <Compile Include="Interfaces\IActivationBinder.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Interfaces\ITypeBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Binder\TypeConfig.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
