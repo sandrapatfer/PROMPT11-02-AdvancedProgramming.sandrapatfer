@@ -40,20 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTypeConfig.cs" />
-    <Compile Include="Binder.cs" />
+    <Compile Include="Binder\BaseTypeConfig.cs" />
+    <Compile Include="Binder\Binder.cs" />
     <Compile Include="DefaultConstructorAttribute.cs" />
     <Compile Include="Exceptions\CircularDependencyException.cs" />
     <Compile Include="Exceptions\DIChelasException.cs" />
     <Compile Include="Exceptions\UnboundTypeException.cs" />
-    <Compile Include="IActivationBinder.cs" />
-    <Compile Include="IConstructorBinder.cs" />
-    <Compile Include="Injector.cs" />
-    <Compile Include="InstanceManager.cs" />
-    <Compile Include="ITypeBinder.cs" />
+    <Compile Include="Interfaces\IActivationBinder.cs" />
+    <Compile Include="Interfaces\IConstructorBinder.cs" />
+    <Compile Include="Injector\Injector.cs" />
+    <Compile Include="Injector\InstanceManager.cs" />
+    <Compile Include="Interfaces\ITypeBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypeConfig.cs" />
+    <Compile Include="Binder\TypeConfig.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

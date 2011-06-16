@@ -19,12 +19,24 @@ namespace ChelasInjection
             protected Type[] m_constructorArguments;
             protected Func<object> m_constructorValues;
             protected Action<object> m_constructorCode;
-            
-            // TODO pode ser um enum?
             protected bool m_withNoArgumentsContructor = false;
-            protected bool m_withSingletonActivation = false;
-            protected bool m_withPerRequestActivation = false;
 
+            protected enum ActivationType
+            {
+                Singleton,
+                PerRequest
+            }
+            protected ActivationType m_activationType = ActivationType.PerRequest;
+
+            public bool ActivationSingleton
+            {
+                get { return m_activationType == ActivationType.Singleton; }
+            }
+            public bool ActivationPerRequest
+            {
+                get { return m_activationType == ActivationType.PerRequest; }
+            }
+    
         }
     }
 }

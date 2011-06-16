@@ -45,6 +45,8 @@ namespace ChelasInjection
                 {
                     return this;
                 }
+                set
+                { }
             }
 
             public ITypeBinder<T> InitializeObjectWith(Action<T> initialization)
@@ -69,12 +71,15 @@ namespace ChelasInjection
 
             public ITypeBinder<T> PerRequest()
             {
-                throw new NotImplementedException();
+                //TODO perguntar se esta activacao é mesmo suposto ser igual
+                m_withPerRequestActivation = true;
+                return this;
             }
 
             public ITypeBinder<T> Singleton()
             {
-                throw new NotImplementedException();
+                m_withSingletonActivation = true;
+                return this;
             }
 
             #endregion

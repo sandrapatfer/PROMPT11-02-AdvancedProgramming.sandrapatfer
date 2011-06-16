@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjection.nunit</TopNode>
+  <SelectedNode>[0-1016]ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorWithMoreBindedArgumenstByDefault</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjection.nunit" Expanded="true" />
+    <Node UniqueName="[0-1027]C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\bin\Debug\ChelasInjection.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1028]ChelasInjection" Expanded="true" />
+    <Node UniqueName="[0-1029]ChelasInjection.Tests" Expanded="true" />
+    <Node UniqueName="[0-1001]ChelasInjection.Tests.ChelasInjectionTests" Expanded="true" />
+  </Nodes>
+</VisualState>

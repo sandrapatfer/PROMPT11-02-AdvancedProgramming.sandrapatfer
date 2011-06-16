@@ -25,7 +25,13 @@ namespace ChelasInjection
                 }
                 else
                 {
-                    return (T)Activator.CreateInstance(cTarget.TargetType);
+                    if (cTarget.ActivationSingleton)
+                        return (T)Activator.CreateInstance(cTarget.TargetType);
+
+                    else
+                    {
+
+                    }
                 }
             }
         }
