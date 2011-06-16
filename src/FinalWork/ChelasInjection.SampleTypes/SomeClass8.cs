@@ -8,7 +8,7 @@ namespace ChelasInjection.SampleTypes {
             Sc62 = sc62;
         }
 
-        public SomeClass6 Sc61 { get; private set; }
-        public SomeClass6 Sc62 { get; private set; }
+        public SomeClass6 Sc61 { get; set; }
+        public SomeClass6 Sc62 { get; set; }
     }
 }

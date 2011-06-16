@@ -17,25 +17,14 @@ namespace ChelasInjection
 
             public IConstructorBinder<T> WithConstructor(params Type[] constructorArguments)
             {
-                m_constructorArguments = constructorArguments;
+                ConstructorType = ConstructorTypeConfig.Values;
+                ConstructorArguments = constructorArguments;
                 return this;
             }
 
             public ITypeBinder<T> WithNoArgumentsConstructor()
             {
-                m_withNoArgumentsContructor = true;
-                return this;
-            }
-
-            public ITypeBinder<T> WithSingletonActivation()
-            {
-                m_withSingletonActivation = true;
-                return this;
-            }
-
-            public ITypeBinder<T> WithPerRequestActivation()
-            {
-                m_withPerRequestActivation = true;
+                ConstructorType = ConstructorTypeConfig.NoArguments;
                 return this;
             }
 
@@ -51,7 +40,8 @@ namespace ChelasInjection
 
             public ITypeBinder<T> InitializeObjectWith(Action<T> initialization)
             {
-                m_constructorCode = o => initialization((T)o);
+                ConstructorType = ConstructorTypeConfig.Action;
+                ConstructorAction = o => initialization((T)o);
                 return this;
             }
 
@@ -61,7 +51,7 @@ namespace ChelasInjection
 
             public ITypeBinder<T> WithValues(Func<object> values)
             {
-                m_constructorValues = values;
+                ConstructorValues = values;
                 return this;
             }
 
@@ -72,13 +62,13 @@ namespace ChelasInjection
             public ITypeBinder<T> PerRequest()
             {
                 //TODO perguntar se esta activacao é mesmo suposto ser igual
-                m_withPerRequestActivation = true;
+                m_activationType = ActivationType.PerRequest;
                 return this;
             }
 
             public ITypeBinder<T> Singleton()
             {
-                m_withSingletonActivation = true;
+                m_activationType = ActivationType.Singleton;
                 return this;
             }
 

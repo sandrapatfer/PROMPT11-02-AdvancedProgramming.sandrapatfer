@@ -8,10 +8,6 @@ namespace ChelasInjection
 
         ITypeBinder<T> WithNoArgumentsConstructor();
 
-        ITypeBinder<T> WithSingletonActivation();
-        
-        ITypeBinder<T> WithPerRequestActivation();
-
         IActivationBinder<T> WithActivation { get; set; }
 
         ITypeBinder<T> InitializeObjectWith(Action<T> initialization);

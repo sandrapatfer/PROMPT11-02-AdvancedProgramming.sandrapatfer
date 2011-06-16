@@ -43,8 +43,9 @@
     <Compile Include="Binder\BaseTypeConfig.cs" />
     <Compile Include="Binder\Binder.cs" />
     <Compile Include="DefaultConstructorAttribute.cs" />
+    <Compile Include="Exceptions\ChelasInjectionException.cs" />
     <Compile Include="Exceptions\CircularDependencyException.cs" />
-    <Compile Include="Exceptions\DIChelasException.cs" />
+    <Compile Include="Exceptions\DuplicateConfigurationException.cs" />
     <Compile Include="Exceptions\UnboundTypeException.cs" />
     <Compile Include="Interfaces\IActivationBinder.cs" />
     <Compile Include="Interfaces\IConstructorBinder.cs" />

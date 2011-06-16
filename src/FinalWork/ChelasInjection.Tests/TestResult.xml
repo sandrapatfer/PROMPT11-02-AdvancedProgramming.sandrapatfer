@@ -1,46 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjection.nunit" total="25" errors="11" failures="8" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-06-16" time="01:19:53">
-  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.4959" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming\src\packages\NUnit.2.5.10.11092\tools" machine-name="WKSPF4" user="spf" user-domain="ASCORP" />
+<test-results name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjection.nunit" total="25" errors="2" failures="4" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-06-16" time="19:57:27">
+  <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.4959" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming\src\Mod02-FinalWork\packages\NUnit.2.5.10.11092\tools" machine-name="WKSPF4" user="spf" user-domain="ASCORP" />
   <culture-info current-culture="pt-PT" current-uiculture="pt-PT" />
-  <test-suite type="Project" name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjection.nunit" executed="True" result="Failure" success="False" time="0.328" asserts="0">
+  <test-suite type="Project" name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjection.nunit" executed="True" result="Failure" success="False" time="0.296" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\bin\Debug\ChelasInjection.Tests.dll" executed="True" result="Failure" success="False" time="0.328" asserts="0">
+      <test-suite type="Assembly" name="C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\bin\Debug\ChelasInjection.Tests.dll" executed="True" result="Failure" success="False" time="0.281" asserts="0">
         <results>
-          <test-suite type="Namespace" name="ChelasInjection" executed="True" result="Failure" success="False" time="0.328" asserts="0">
+          <test-suite type="Namespace" name="ChelasInjection" executed="True" result="Failure" success="False" time="0.281" asserts="0">
             <results>
-              <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="0.328" asserts="0">
+              <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="0.281" asserts="0">
                 <results>
-                  <test-suite type="TestFixture" name="ChelasInjectionTests" executed="True" result="Failure" success="False" time="0.328" asserts="0">
+                  <test-suite type="TestFixture" name="ChelasInjectionTests" executed="True" result="Failure" success="False" time="0.281" asserts="0">
                     <results>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorAnotatedWithDefaulAttributeForISomeInterface5" executed="True" result="Error" success="False" time="0.094" asserts="0">
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorAnotatedWithDefaulAttributeForISomeInterface5" executed="True" result="Failure" success="False" time="0.031" asserts="2">
                         <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorAnotatedWithDefaulAttributeForISomeInterface5() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 254
+                          <message><![CDATA[  Expected: null
+  But was:  <ChelasInjection.SampleTypes.SomeInterface2Impl>
+]]></message>
+                          <stack-trace><![CDATA[at ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorAnotatedWithDefaulAttributeForISomeInterface5() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 259
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorWithMoreBindedArgumenstByDefault" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorWithMoreBindedArgumenstByDefault() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 240
-]]></stack-trace>
-                        </failure>
-                      </test-case>
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorWithMoreBindedArgumenstByDefault" executed="True" result="Success" success="True" time="0.000" asserts="2" />
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheCorrectConstructorWhenWithConstructorOperatorIsUsedForISomeInterface2" executed="True" result="Failure" success="False" time="0.016" asserts="1">
                         <failure>
                           <message><![CDATA[  Expected: not null
@@ -51,24 +33,22 @@ at ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheConstructorWithMore
                         </failure>
                       </test-case>
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldChooseTheNoArgumentsConstructorWhenNoArgumentsConstructorOperatorIsUsedForISomeInterface1" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateAnInstanceForAnUnboundTypeWithPublicConstructors" executed="True" result="Error" success="False" time="0.000" asserts="0">
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateAnInstanceForAnUnboundTypeWithPublicConstructors" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeClass2InstanceForSomeClass2RequestWithSelfBindConfiguration" executed="True" result="Error" success="False" time="0.016" asserts="0">
                         <failure>
-                          <message><![CDATA[ChelasInjection.Exceptions.UnboundTypeException : Exception of type 'ChelasInjection.Exceptions.UnboundTypeException' was thrown.]]></message>
-                          <stack-trace><![CDATA[at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 24
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateAnInstanceForAnUnboundTypeWithPublicConstructors() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 127
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeClass2InstanceForSomeClass2RequestWithSelfBindConfiguration" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
+                          <message><![CDATA[ChelasInjection.Exceptions.CircularDependencyException : Exception of type 'ChelasInjection.Exceptions.CircularDependencyException' was thrown.]]></message>
+                          <stack-trace><![CDATA[at ChelasInjection.Injector.InstanceManager.AddType(Type tType) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 74
+at ChelasInjection.Injector.InstanceManager.GetInstance(Type tType) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 63
+at ChelasInjection.Injector.InstanceManager.CreateObjectWithConstructor(ConstructorInfo constructor) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 157
+at ChelasInjection.Injector.InstanceManager.CreateObject(BaseTypeConfig cTarget) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 116
+at ChelasInjection.Injector.InstanceManager.GetInstance(Type tType) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 64
+at ChelasInjection.Injector.InstanceManager.CreateObjectWithConstructor(ConstructorInfo constructor) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 157
+at ChelasInjection.Injector.InstanceManager.CreateObject(BaseTypeConfig cTarget) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 116
+at ChelasInjection.Injector.InstanceManager.GetInstance(Type tType) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 64
+at ChelasInjection.Injector.InstanceManager.CreateObjectWithConstructor(ConstructorInfo constructor) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 157
+at ChelasInjection.Injector.InstanceManager.CreateObject(BaseTypeConfig cTarget) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 116
+at ChelasInjection.Injector.InstanceManager.GetInstance(Type tType) in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 64
+at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 24
 at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
 at ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeClass2InstanceForSomeClass2RequestWithSelfBindConfiguration() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 140
 ]]></stack-trace>
@@ -76,21 +56,8 @@ at ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeClass2InstanceFor
                       </test-case>
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeClass4InstanceForSomeClass4Request" executed="True" result="Success" success="True" time="0.000" asserts="1" />
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeInterface1ImplInstanceForISomeInterface1Request" executed="True" result="Success" success="True" time="0.000" asserts="1" />
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeInterface2ImplInstanceForISomeInterface2RequestAndAlsoCreateItsDependencies" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeInterface2ImplInstanceForISomeInterface2RequestAndAlsoCreateItsDependencies() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 68
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeInterface3ImplInstanceForISomeInterface2RequestAndAlsoCreateItsDependencies" executed="True" result="Failure" success="False" time="0.000" asserts="2">
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeInterface2ImplInstanceForISomeInterface2RequestAndAlsoCreateItsDependencies" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeInterface3ImplInstanceForISomeInterface2RequestAndAlsoCreateItsDependencies" executed="True" result="Failure" success="False" time="0.016" asserts="2">
                         <failure>
                           <message><![CDATA[  Expected: not null
   But was:  null
@@ -99,35 +66,9 @@ at ChelasInjection.Tests.ChelasInjectionTests.ShouldCreateASomeInterface2ImplIns
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldExecuteInitializationExpressionForISomeInterface2Impl" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldExecuteInitializationExpressionForISomeInterface2Impl() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 225
-]]></stack-trace>
-                        </failure>
-                      </test-case>
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldExecuteInitializationExpressionForISomeInterface2Impl" executed="True" result="Success" success="True" time="0.000" asserts="2" />
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldGivePriorirtyToCustomResolverAlthoughSomeClass7IsBound" executed="True" result="Success" success="True" time="0.000" asserts="2" />
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveDefautActivationOnDependencies" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveDefautActivationOnDependencies() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 168
-]]></stack-trace>
-                        </failure>
-                      </test-case>
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveDefautActivationOnDependencies" executed="True" result="Success" success="True" time="0.000" asserts="1" />
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerCallActivationForDependenciesISomeInterface3Instances" executed="True" result="Error" success="False" time="0.000" asserts="0">
                         <failure>
                           <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
@@ -135,97 +76,16 @@ at ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveDefautActivationOnDepend
 ]]></stack-trace>
                         </failure>
                       </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestActivationForISomeInterface2Request" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestActivationForISomeInterface2Request() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 181
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestActivationForNotBoundClass8ButWithCustomResolverProvidedInstance" executed="True" result="Failure" success="False" time="0.000" asserts="2">
-                        <failure>
-                          <message><![CDATA[  Expected: not null
-  But was:  null
-]]></message>
-                          <stack-trace><![CDATA[at ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestActivationForNotBoundClass8ButWithCustomResolverProvidedInstance() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 376
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestAsDefaultActivation" executed="True" result="Success" success="True" time="0.016" asserts="1" />
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveSingletonActivationForISomeInterface3Request" executed="True" result="Failure" success="False" time="0.000" asserts="1">
-                        <failure>
-                          <message><![CDATA[  Expected: same as <ChelasInjection.SampleTypes.SomeInterface3Impl>
-  But was:  <ChelasInjection.SampleTypes.SomeInterface3Impl>
-]]></message>
-                          <stack-trace><![CDATA[at ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveSingletonActivationForISomeInterface3Request() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 201
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveSingletonActivationForSomeClass7CustomResolverProvidedInstances" executed="True" result="Failure" success="False" time="0.000" asserts="2">
-                        <failure>
-                          <message><![CDATA[  Expected: same as <ChelasInjection.SampleTypes.SomeClass7>
-  But was:  <ChelasInjection.SampleTypes.SomeClass7>
-]]></message>
-                          <stack-trace><![CDATA[at ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveSingletonActivationForSomeClass7CustomResolverProvidedInstances() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 390
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldMaintainActivationEvenForSomeClass7ProvidedByCustomResolver" executed="True" result="Failure" success="False" time="0.000" asserts="2">
-                        <failure>
-                          <message><![CDATA[  Expected: same as <ChelasInjection.SampleTypes.SomeClass7>
-  But was:  <ChelasInjection.SampleTypes.SomeClass7>
-]]></message>
-                          <stack-trace><![CDATA[at ChelasInjection.Tests.ChelasInjectionTests.ShouldMaintainActivationEvenForSomeClass7ProvidedByCustomResolver() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 364
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldReturnSomeClass6NotBoundAndCreatedByTheCustomResolver" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[ChelasInjection.Exceptions.UnboundTypeException : Exception of type 'ChelasInjection.Exceptions.UnboundTypeException' was thrown.]]></message>
-                          <stack-trace><![CDATA[at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 24
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldReturnSomeClass6NotBoundAndCreatedByTheCustomResolver() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 333
-]]></stack-trace>
-                        </failure>
-                      </test-case>
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldThrowCircularDependencyExceptionOnInstantiationForSomeClass1" executed="True" result="Failure" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[An unexpected exception type was thrown
-Expected: ChelasInjection.Exceptions.CircularDependencyException
- but was: System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldThrowCircularDependencyExceptionOnInstantiationForSomeClass1() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 102
-]]></stack-trace>
-                        </failure>
-                      </test-case>
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestActivationForISomeInterface2Request" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestActivationForNotBoundClass8ButWithCustomResolverProvidedInstance" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHavePerRequestAsDefaultActivation" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveSingletonActivationForISomeInterface3Request" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldHaveSingletonActivationForSomeClass7CustomResolverProvidedInstances" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldMaintainActivationEvenForSomeClass7ProvidedByCustomResolver" executed="True" result="Success" success="True" time="0.000" asserts="2" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldReturnSomeClass6NotBoundAndCreatedByTheCustomResolver" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldThrowCircularDependencyExceptionOnInstantiationForSomeClass1" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldThrowUnboundTypeExceptionForAnUnboundAbstractType" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldUseTheLastBindForISomeInterface4" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                        <failure>
-                          <message><![CDATA[System.MissingMethodException : No parameterless constructor defined for this object.]]></message>
-                          <stack-trace><![CDATA[at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
-at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache)
-at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipVisibilityChecks, Boolean skipCheckThis, Boolean fillCache)
-at System.Activator.CreateInstance(Type type, Boolean nonPublic)
-at System.Activator.CreateInstance(Type type)
-at ChelasInjection.Injector.InstanceManager.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\InstanceManager.cs:line 29
-at ChelasInjection.Injector.GetInstance[T]() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\Injector\Injector.cs:line 19
-at ChelasInjection.Tests.ChelasInjectionTests.ShouldUseTheLastBindForISomeInterface4() in C:\SPF\prompt11\uc02\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.Tests\ChelasInjectionTests.cs:line 301
-]]></stack-trace>
-                        </failure>
-                      </test-case>
+                      <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldUseTheLastBindForISomeInterface4" executed="True" result="Success" success="True" time="0.000" asserts="2" />
                       <test-case name="ChelasInjection.Tests.ChelasInjectionTests.ShouldUseTheLastConstructorDefinitionInOneBindForISomeInterface3" executed="True" result="Failure" success="False" time="0.000" asserts="1">
                         <failure>
                           <message><![CDATA[  Expected: not null

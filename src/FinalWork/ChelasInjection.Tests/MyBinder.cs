@@ -22,11 +22,18 @@ namespace ChelasInjection.Tests
         /// <summary>
         /// Override this method to configure the application types binding. 
         /// </summary>
-        protected override void InternalConfigure() {
+        protected override void InternalConfigure()
+        {
             Bind<ISomeInterface2, SomeInterface2Impl>().WithActivation.PerRequest().InitializeObjectWith(o => { o.SomeInitializatonMethod(); o.SomeStr = "Initialized"; });
-            Bind<ISomeInterface3, SomeInterface3Impl>().WithNoArgumentsConstructor().WithActivation.Singleton().
+
+            //Bind<ISomeInterface3, SomeInterface3Impl>().WithNoArgumentsConstructor().WithActivation.Singleton().
+            //WithConstructor(typeof(int), typeof(ISomeInterface2), typeof(ISomeInterface1), typeof(string)).
+            //WithValues(() => new { p1 = 12, p3 = "SLB" });
+
+            Bind<ISomeInterface3, SomeInterface3Impl>().WithActivation.Singleton().
             WithConstructor(typeof(int), typeof(ISomeInterface2), typeof(ISomeInterface1), typeof(string)).
             WithValues(() => new { p1 = 12, p3 = "SLB" });
+
             Bind<ISomeInterface1, SomeInterface1Impl>().WithNoArgumentsConstructor();
             Bind<ISomeInterface4, SomeInterface4Impl>().WithNoArgumentsConstructor();
             Bind<ISomeInterface4, SomeInterface4Impl>().WithActivation.Singleton();
@@ -37,7 +44,7 @@ namespace ChelasInjection.Tests
             Bind<SomeClass3, SomeClass3>();
             Bind<SomeClass4, SomeClass4>();
             Bind<SomeClass7>().WithActivation.Singleton();
-            Bind<SomeClass8, SomeClass8>();
+            Bind<SomeClass8>().InitializeObjectWith(o => { o.Sc61 = o.Sc62 = new SomeClass6(); });
             CustomResolver += MyCustomResolver.Resolve;
             CustomResolver += MyCustomResolver.ResolveDummy;
             CustomResolver += MyCustomResolver.AnotherResolver;

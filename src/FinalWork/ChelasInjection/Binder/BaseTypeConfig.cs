@@ -14,19 +14,28 @@ namespace ChelasInjection
             public BaseTypeConfig(Type type)
             {
                 TargetType = type;
+                ConstructorType = ConstructorTypeConfig.NoValue;
             }
 
-            protected Type[] m_constructorArguments;
-            protected Func<object> m_constructorValues;
-            protected Action<object> m_constructorCode;
-            protected bool m_withNoArgumentsContructor = false;
+            public enum ConstructorTypeConfig
+            {
+                NoValue,
+                NoArguments,
+                Values,
+                Action
+            }
+            public ConstructorTypeConfig ConstructorType { get; protected set; }
+            public Type[] ConstructorArguments { get; protected set; }
+            public Func<object> ConstructorValues { get; protected set; }
+            public Action<object> ConstructorAction { get; protected set; }
 
             protected enum ActivationType
             {
+                NoValue,
                 Singleton,
                 PerRequest
             }
-            protected ActivationType m_activationType = ActivationType.PerRequest;
+            protected ActivationType m_activationType = ActivationType.NoValue;
 
             public bool ActivationSingleton
             {
