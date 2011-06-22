@@ -45,6 +45,11 @@ namespace ChelasInjection
                 return this;
             }
 
+            public void WhenArgumentHas<TAttribute>() where TAttribute : Attribute
+            {
+                AttributeType = typeof(TAttribute);
+            }
+
             #endregion
 
             #region IConstructorBinder<T> Members

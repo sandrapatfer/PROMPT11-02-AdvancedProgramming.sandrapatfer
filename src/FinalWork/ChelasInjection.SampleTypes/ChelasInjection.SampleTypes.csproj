@@ -43,6 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\BlackAttribute.cs" />
+    <Compile Include="Attributes\YellowAttribute.cs" />
+    <Compile Include="Attributes\RedAttribute.cs" />
+    <Compile Include="SomeClass14.cs" />
+    <Compile Include="ISomeInterface8.cs" />
+    <Compile Include="SomeClass13.cs" />
+    <Compile Include="SomeInterface7Default.cs" />
+    <Compile Include="SomeClass12.cs" />
+    <Compile Include="SomeClass11.cs" />
+    <Compile Include="SomeInterface7And8Yellow.cs" />
+    <Compile Include="SomeInterface7Red.cs" />
+    <Compile Include="ISomeInterface7.cs" />
+    <Compile Include="SomeClass10.cs" />
+    <Compile Include="SomeClass9.cs" />
     <Compile Include="ISomeInterface6.cs" />
     <Compile Include="SomeClass8.cs" />
     <Compile Include="SomeClass7.cs" />

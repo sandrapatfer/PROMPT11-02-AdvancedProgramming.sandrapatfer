@@ -42,11 +42,14 @@
   <ItemGroup>
     <Compile Include="Binder\BaseTypeConfig.cs" />
     <Compile Include="Binder\Binder.cs" />
+    <Compile Include="Binder\TypeConfigHandler.cs" />
     <Compile Include="DefaultConstructorAttribute.cs" />
     <Compile Include="Exceptions\ChelasInjectionException.cs" />
     <Compile Include="Exceptions\CircularDependencyException.cs" />
     <Compile Include="Exceptions\MissingAppropriateConstructorException.cs" />
     <Compile Include="Exceptions\DuplicateConfigurationException.cs" />
+    <Compile Include="Exceptions\MultipleBindException.cs" />
+    <Compile Include="Exceptions\MultipleDefaultConstructorAttributesException.cs" />
     <Compile Include="Exceptions\UnboundTypeException.cs" />
     <Compile Include="Interfaces\IActivationBinder.cs" />
     <Compile Include="Interfaces\IConstructorBinder.cs" />

@@ -8,101 +8,108 @@ namespace ChelasInjection
 {
     partial class Injector
     {
+        public struct TypeIndex
+        {
+            public Type Type;
+            public Type Attribute;
+        }
+
         class InstanceManager
         {
             private Binder m_binder;
-            private List<Type> m_typeContructionPath = new List<Type>();
-            private Dictionary<Type, object> m_singletonList = new Dictionary<Type, object>();
-            private Dictionary<Type, object> m_currentCallObjectList;
+            private List<TypeIndex> m_typeContructionPath = new List<TypeIndex>();
+            private Dictionary<TypeIndex, object> m_singletonList = new Dictionary<TypeIndex, object>();
+            private Dictionary<TypeIndex, object> m_currentCallObjectList;
 
             public InstanceManager(Binder binder)
             {
                 this.m_binder = binder;
             }
 
-            internal T GetInstance<T>()
+            public T GetInstance<T>()
             {
-                m_currentCallObjectList = new Dictionary<Type, object>();
-                return (T)GetInstance(typeof(T));
+                m_currentCallObjectList = new Dictionary<TypeIndex, object>();
+                return (T)GetInstance(new TypeIndex() { Type = typeof(T) });
             }
 
-            internal object GetInstance(Type tType)
+            public T GetInstance<T, TA>()
+            {
+                m_currentCallObjectList = new Dictionary<TypeIndex, object>();
+                return (T)GetInstance(new TypeIndex() { Type = typeof(T), Attribute = typeof(TA) });
+            }
+
+            internal object GetInstance(TypeIndex tIndex)
             {
                 // a type already created is always returned
-                if (m_currentCallObjectList.ContainsKey(tType))
-                    return m_currentCallObjectList[tType];
+                if (m_currentCallObjectList.ContainsKey(tIndex))
+                    return m_currentCallObjectList[tIndex];
 
-                // a type configured as singleton always returns the same type, independently of the configuration
-                Binder.BaseTypeConfig cTarget = m_binder.GetTargetType(tType);
+                // a type configured as singleton always returns the same object, independently of the configuration
+                Binder.BaseTypeConfig cTarget = GetBinderConfig(tIndex);
                 if (cTarget != null && cTarget.ActivationSingleton)
                 {
-                    if (m_singletonList.ContainsKey(tType))
+                    if (m_singletonList.ContainsKey(tIndex))
                     {
-                        return m_singletonList[tType];
+                        return m_singletonList[tIndex];
                     }
                 }
 
-                object resolvedObject = m_binder.ResolveType(tType);
+                // try to resolve the type from the custom resolvers
+                object resolvedObject = m_binder.ResolveType(tIndex.Type);
                 if (resolvedObject != null)
                 {
-                    CheckConfigForObject(tType, resolvedObject);
+                    CheckConfigForObject(tIndex, cTarget, resolvedObject);
                 }
                 else
                 {
-                    resolvedObject = GetInstanceFromConfig(tType);
+                    // create the object from the binded configuration
+                    resolvedObject = GetInstanceFromConfig(tIndex, cTarget);
                 }
-                m_currentCallObjectList.Add(tType, resolvedObject);
+
+                m_currentCallObjectList.Add(tIndex, resolvedObject);
                 return resolvedObject;
             }
 
-            internal object GetInstanceFromConfig(Type tType)
+            private object GetInstanceFromConfig(TypeIndex tIndex, Binder.BaseTypeConfig tConfig)
             {
-                Binder.BaseTypeConfig cTarget = m_binder.GetTargetType(tType);
-                if (cTarget == null)
+                if (tConfig == null)
                 {
-                    ConstructorInfo constructor = FindConstructor(tType);
+                    ConstructorInfo constructor = FindConstructor(tIndex.Type);
                     if (constructor == null)
                     {
                         throw new Exceptions.UnboundTypeException();
                     }
                     else
                     {
-                        return ProtectObjectCreation(tType, ()=>CreateObjectWithConstructor(constructor, c => null), null);
+                        return ProtectObjectCreation(tIndex, () => CreateObjectWithConstructor(constructor, c => null), null);
                     }
                 }
-                else if (cTarget.ActivationSingleton)
+                else if (tConfig.ActivationSingleton)
                 {
-                    if (m_singletonList.ContainsKey(tType))
-                    {
-                        return m_singletonList[tType];
-                    }
-                    else
-                    {
-                        return ProtectObjectCreation(tType, ()=> CreateObject(cTarget), obj => m_singletonList.Add(tType, obj));
-                    }
+                    return ProtectObjectCreation(tIndex, () => CreateObject(tConfig), obj => m_singletonList.Add(tIndex, obj));
                 }
                 else
                 {
-                    return ProtectObjectCreation(tType, ()=>CreateObject(cTarget), null);
+                    return ProtectObjectCreation(tIndex, () => CreateObject(tConfig), null);
                 }
             }
 
-            private object ProtectObjectCreation(Type tType, Func<object> creationFunc, Action<object> additionalAction)
+            private object ProtectObjectCreation(TypeIndex tIndex, Func<object> creationFunc, Action<object> additionalAction)
             {
-                if (m_typeContructionPath.Exists(t => t == tType))
+                if (m_typeContructionPath.Exists(t => t.Type == tIndex.Type && t.Attribute == tIndex.Attribute))
                 {
                     throw new Exceptions.CircularDependencyException();
                 }
                 else
                 {
-                    m_typeContructionPath.Add(tType);
+                    m_typeContructionPath.Add(tIndex);
                 }
 
                 object obj = creationFunc();
                 if (additionalAction != null)
                     additionalAction(obj);
 
-                m_typeContructionPath.Remove(tType);
+                m_typeContructionPath.Remove(tIndex);
                 
                 return obj;
             }
@@ -123,14 +130,14 @@ namespace ChelasInjection
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.Action:
                         {
                             var obj = CreateObjectWithConstructor(FindConstructor(cTarget.TargetType),
-                                constructor => constructor.GetParameters().Select(p => GetInstance(p.ParameterType)).ToArray());
+                                constructor => constructor.GetParameters().Select(p => GetInstance(GetParameterTypeIndex(p))).ToArray());
                             cTarget.ConstructorAction(obj);
                             return obj;
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.NoValue:
                         {
                             return CreateObjectWithConstructor(FindConstructor(cTarget.TargetType),
-                                constructor => constructor.GetParameters().Select(p => GetInstance(p.ParameterType)).ToArray());
+                                constructor => constructor.GetParameters().Select(p => GetInstance(GetParameterTypeIndex(p))).ToArray());
                         }
                     default:
                         throw new ArgumentException("Unexpected value in Binder.BaseTypeConfig.ConstructorTypeConfig");
@@ -203,23 +210,54 @@ namespace ChelasInjection
                 }
                 else
                 {
-                    return GetInstance(param.ParameterType);
+                    return GetInstance(GetParameterTypeIndex(param));
                 }
             }
 
-            private void CheckConfigForObject(Type tType, object resolvedObject)
+            private TypeIndex GetParameterTypeIndex(ParameterInfo param)
             {
-                Binder.BaseTypeConfig cTarget = m_binder.GetTargetType(tType);
-                if (cTarget == null)
-                    return;
-                if (cTarget.ActivationSingleton)
+                object[] attrs = param.GetCustomAttributes(false);
+                if (attrs.Length == 1)
                 {
-                    m_singletonList.Add(tType, resolvedObject);
+                    return new TypeIndex() { Type = param.ParameterType, Attribute = attrs[0].GetType() };
                 }
-
-                if (cTarget.ConstructorType == Binder.BaseTypeConfig.ConstructorTypeConfig.Action)
+                else
                 {
-                    cTarget.ConstructorAction(resolvedObject);
+                    return new TypeIndex() { Type = param.ParameterType };
+                }
+            }
+
+            private void CheckConfigForObject(TypeIndex tIndex, Binder.BaseTypeConfig tConfig, object resolvedObject)
+            {
+                if (tConfig == null)
+                    return;
+                if (tConfig.ActivationSingleton)
+                {
+                    m_singletonList.Add(tIndex, resolvedObject);
+                }
+                if (tConfig.ConstructorType == Binder.BaseTypeConfig.ConstructorTypeConfig.Action)
+                {
+                    tConfig.ConstructorAction(resolvedObject);
+                }
+            }
+
+            private Binder.BaseTypeConfig GetBinderConfig(TypeIndex tIndex)
+            {
+                Binder.TypeConfigHandler tHandler = m_binder.GetTargetType(tIndex.Type);
+                if (tHandler != null)
+                {
+                    if (tIndex.Attribute == null)
+                    {
+                        return tHandler.DefaultConfig;
+                    }
+                    else
+                    {
+                        return tHandler.AttributeConfig(tIndex.Attribute);
+                    }
+                }
+                else
+                {
+                    return null;
                 }
             }
         }

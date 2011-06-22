@@ -16,6 +16,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace ChelasInjection.Tests {
+    using ChelasInjection.SampleTypes.Attributes;
+
     using Exceptions;
     using NUnit.Framework;
     using SampleTypes;
@@ -45,7 +47,6 @@ namespace ChelasInjection.Tests {
         public void SetupFixture() {
             _injector = new Injector(new MyBinder());
         }
-
 
         #region Instance creation
 
@@ -132,15 +133,15 @@ namespace ChelasInjection.Tests {
 
 
         [Test]
-        public void ShouldCreateASomeClass2InstanceForSomeClass2RequestWithSelfBindConfiguration()
+        public void ShouldCreateASomeClass9InstanceForSomeClass9RequestWithSelfBindConfiguration()
         {
             // Arrange
 
             // Act
-            SomeClass2 sc2 = _injector.GetInstance<SomeClass2>();
+            SomeClass9 sc9 = _injector.GetInstance<SomeClass9>();
 
             // Assert
-            Assert.AreEqual(sc2.GetType(), typeof(SomeClass2));
+            Assert.IsNotNull(sc9);
         }
 
         #endregion Instance creation
@@ -258,6 +259,17 @@ namespace ChelasInjection.Tests {
             Assert.IsNotNull(i5impl.I1);
             Assert.IsNull(i5impl.I2);
 
+        }
+
+        [Test, ExpectedException(typeof(MultipleDefaultConstructorAttributesException))]
+        public void ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute() {
+            // Arrange
+
+            // Act
+            _injector.GetInstance<SomeClass10>();
+
+
+            // Assert
         }
 
         [Test]
@@ -390,5 +402,118 @@ namespace ChelasInjection.Tests {
             Assert.AreSame(sc7, sc71);
         }
         #endregion Custom Resolver tests
+
+        #region Multiple Binding 
+
+        [Test]
+        public void ShouldChooseSomeInterface10RedImplementationForDependencyOnSomeClass11()
+        {
+            // Arrange
+
+            // Act
+            SomeClass11 sc11 = _injector.GetInstance<SomeClass11>();
+
+
+            // Assert
+            Assert.IsNotNull(sc11);
+            Assert.AreSame(typeof(SomeInterface7And8Red), sc11.Si7.GetType());
+
+        }
+
+
+        [Test]
+        public void ShouldChooseSomeInterface10YellowImplementationForDependencyOnSomeClass12()
+        {
+            // Arrange
+
+            // Act
+            SomeClass12 sc12 = _injector.GetInstance<SomeClass12>();
+
+
+            // Assert
+            Assert.IsNotNull(sc12);
+            Assert.AreSame(typeof(SomeInterface7And8Yellow), sc12.Si7.GetType());
+
+        }
+
+        [Test]
+        public void ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass13WithNotConfiguredBlackAttribute()
+        {
+            // Arrange
+
+            // Act
+            SomeClass13 sc13 = _injector.GetInstance<SomeClass13>();
+
+            // Assert
+            Assert.AreSame(typeof(SomeInterface7Default), sc13.GetType());
+
+        }
+
+
+        [Test]
+        public void ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass14WithNoArgumentAttribute()
+        {
+            // Arrange
+
+            // Act
+            SomeClass14 sc14 = _injector.GetInstance<SomeClass14>();
+
+            // Assert
+            Assert.AreSame(typeof(SomeInterface7Default), sc14.GetType());
+
+        }
+
+        [Test]
+        public void ShouldReturnSomeInterface7DefaultForSomeInterface7RequestWhenNoSelectionAttributeIsdefined()
+        {
+            // Arrange
+
+            // Act
+            ISomeInterface7 isi7 = _injector.GetInstance<ISomeInterface7>();
+
+            // Assert
+            Assert.AreSame(typeof(SomeInterface7Default), isi7.GetType());
+
+        }
+
+        [Test]
+        public void ShouldReturnSomeInterface7And8RedForSomeInterface7RequestWhenSelectionAttributeIsdefined()
+        {
+            // Arrange
+
+            // Act
+            ISomeInterface7 isi7 = _injector.GetInstance<ISomeInterface7, RedAttribute>();
+
+            // Assert
+            Assert.AreSame(typeof(SomeInterface7And8Red), isi7.GetType());
+
+        }
+
+
+        [Test, ExpectedException(typeof(UnboundTypeException))]
+        public void ShouldThrowUnboundExceptionForISomeInterface8Request()
+        {
+            // Arrange
+
+            // Act
+            _injector.GetInstance<ISomeInterface8>();
+
+            // Assert
+        }
+
+
+        [Test]
+        public void ShouldReturnSomeInterface7And8RedForSomeInterface8RequestWhenSelectionAttributeIsdefined()
+        {
+            // Arrange
+
+            // Act
+            ISomeInterface8 isi8 = _injector.GetInstance<ISomeInterface8, RedAttribute>();
+
+            // Assert
+            Assert.AreSame(typeof(SomeInterface7And8Red), isi8.GetType());
+
+        }
+        #endregion Multiple Binding
     }
 }

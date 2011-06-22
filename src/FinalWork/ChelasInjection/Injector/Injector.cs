@@ -18,5 +18,15 @@ namespace ChelasInjection
         {
             return _myInstanceManager.GetInstance<T>();
         }
+
+        public T GetInstance<T, TA>() where TA : Attribute
+        {
+            return _myInstanceManager.GetInstance<T, TA>();
+        }
+
+        public T GetInstance<T>(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

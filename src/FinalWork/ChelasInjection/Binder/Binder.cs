@@ -10,46 +10,52 @@ namespace ChelasInjection
     {
         public void Configure()
         {
+            m_activeConfigSourceType = null;
+            m_activeConfig = null;
             InternalConfigure();
+            HandleActiveConfig();
         }
 
         protected abstract void InternalConfigure();
 
-        Dictionary<Type, BaseTypeConfig> m_bindingTypes = new Dictionary<Type,BaseTypeConfig>();
+        Dictionary<Type, TypeConfigHandler> m_bindingTypes = new Dictionary<Type, TypeConfigHandler>();
+        Type m_activeConfigSourceType;
+        BaseTypeConfig m_activeConfig;
 
         public ITypeBinder<Target> Bind<Source, Target>()
         {
-            Type sType = typeof(Source);
-            var tConfig = new TypeConfig<Target>(typeof(Target));
-            if (m_bindingTypes.ContainsKey(sType))
-            {
-                // replaces the current configuration ?
-                m_bindingTypes[sType] = tConfig;
-            }
-            else
-            {
-                m_bindingTypes.Add(sType, tConfig);
-            }
-            return tConfig;
+            HandleActiveConfig();
+
+            m_activeConfigSourceType = typeof(Source);
+            m_activeConfig = new TypeConfig<Target>(typeof(Target));
+            return (TypeConfig<Target>)m_activeConfig;
         }
 
         public ITypeBinder<Source> Bind<Source>()
         {
-            Type sType = typeof(Source);
-            var tConfig = new TypeConfig<Source>(sType);
-            if (m_bindingTypes.ContainsKey(sType))
-            {
-                // replaces the current configuration ?
-                m_bindingTypes[sType] = tConfig;
-            }
-            else
-            {
-                m_bindingTypes.Add(sType, tConfig);
-            }
-            return tConfig;
+            HandleActiveConfig();
+
+            m_activeConfigSourceType = typeof(Source);
+            m_activeConfig = new TypeConfig<Source>(typeof(Source));
+            return (TypeConfig<Source>)m_activeConfig;
         }
 
-        internal BaseTypeConfig GetTargetType(Type tType)
+        private void HandleActiveConfig()
+        {
+            if (m_activeConfigSourceType != null)
+            {
+                if (m_bindingTypes.ContainsKey(m_activeConfigSourceType))
+                {
+                    m_bindingTypes[m_activeConfigSourceType].HandleNewConfig(m_activeConfig);
+                }
+                else
+                {
+                    m_bindingTypes.Add(m_activeConfigSourceType, new TypeConfigHandler(m_activeConfig));
+                }
+            }
+        }
+
+        internal TypeConfigHandler GetTargetType(Type tType)
         {
             if (m_bindingTypes.ContainsKey(tType))
             {

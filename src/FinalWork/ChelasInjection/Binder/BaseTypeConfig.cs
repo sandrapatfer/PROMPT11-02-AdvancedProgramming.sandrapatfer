@@ -28,6 +28,7 @@ namespace ChelasInjection
             public Type[] ConstructorArguments { get; protected set; }
             public Func<object> ConstructorValues { get; protected set; }
             public Action<object> ConstructorAction { get; protected set; }
+            public Type AttributeType { get; protected set; }
 
             protected enum ActivationType
             {
