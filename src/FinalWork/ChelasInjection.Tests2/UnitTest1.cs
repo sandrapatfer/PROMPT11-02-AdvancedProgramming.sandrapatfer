@@ -51,6 +51,7 @@ namespace ChelasInjection.Tests
         {
 
             ISomeInterface3 i3impl = _injector.GetInstance<ISomeInterface3>();
+            ISomeInterface3 i3impl2 = _injector.GetInstance<ISomeInterface3>();
 
             Assert.AreEqual(i3impl.GetType(), typeof(SomeInterface3Impl));
             Assert.IsNotNull(i3impl.I1);

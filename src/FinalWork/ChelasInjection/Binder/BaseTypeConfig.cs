@@ -46,7 +46,9 @@ namespace ChelasInjection
             {
                 get { return m_activationType == ActivationType.PerRequest; }
             }
-    
+
+
+            public Func<object> Constructor { get; set; }
         }
     }
 }

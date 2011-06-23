@@ -21,7 +21,6 @@ namespace ChelasInjection
             private List<TypeIndex> m_typeContructionPath = new List<TypeIndex>();
             private Dictionary<TypeIndex, object> m_singletonList = new Dictionary<TypeIndex, object>();
             private Dictionary<TypeIndex, object> m_currentCallObjectList;
-            private Dictionary<Type, Func<object>> m_notBindedConstructorList = new Dictionary<Type,Func<object>>();
 
             public InstanceManager(Binder binder)
             {
@@ -64,30 +63,8 @@ namespace ChelasInjection
                 }
                 else
                 {
-                    if (cTarget == null)
-                    {
-                        // for not binded types, find the most suitable constructor
-                        if (!m_notBindedConstructorList.ContainsKey(tIndex.Type))
-                        {
-                            ConstructorInfo constructor = FindConstructor(tIndex.Type);
-                            if (constructor == null)
-                            {
-                                throw new Exceptions.UnboundTypeException();
-                            }
-                            else
-                            {
-                                var expr = CreateExpressionConstructor(constructor,
-                                    ci => ci.GetParameters().Select(p => CreateParameterExpression(p)).ToArray());
-                                m_notBindedConstructorList.Add(tIndex.Type, Expression.Lambda<Func<object>>(expr).Compile());
-                            }
-                        }
-                        return ProtectObjectCreation(tIndex, () => m_notBindedConstructorList[tIndex.Type](), null);
-                    }
-                    else
-                    {
-                        // create the object from the binded configuration
-                        resolvedObject = GetInstanceFromConfig(tIndex, cTarget);
-                    }
+                    // create the object from the binded configuration
+                    resolvedObject = GetInstanceFromConfig(tIndex, cTarget);
                 }
 
                 m_currentCallObjectList.Add(tIndex, resolvedObject);
@@ -96,7 +73,19 @@ namespace ChelasInjection
 
             private object GetInstanceFromConfig(TypeIndex tIndex, Binder.BaseTypeConfig tConfig)
             {
-                if (tConfig.ActivationSingleton)
+                if (tConfig == null)
+                {
+                    ConstructorInfo constructor = FindConstructor(tIndex.Type);
+                    if (constructor == null)
+                    {
+                        throw new Exceptions.UnboundTypeException();
+                    }
+                    else
+                    {
+                        return ProtectObjectCreation(tIndex, () => CreateObjectWithConstructor(constructor, FuncForBuildingParameters()), null);
+                    }
+                }
+                else if (tConfig.ActivationSingleton)
                 {
                     return ProtectObjectCreation(tIndex, () => CreateObject(tConfig), obj => m_singletonList.Add(tIndex, obj));
                 }
@@ -128,51 +117,43 @@ namespace ChelasInjection
 
             private object CreateObject(Binder.BaseTypeConfig cTarget)
             {
-                if (cTarget.Constructor == null)
+                if (cTarget.Constructor != null)
                 {
-                    CreateConstructor(cTarget);
+                    return cTarget.Constructor();
                 }
 
-                var obj = cTarget.Constructor();
-                if (cTarget.ConstructorType == Binder.BaseTypeConfig.ConstructorTypeConfig.Action)
-                {
-                    cTarget.ConstructorAction(obj);
-                }
-                return obj;
-            }
-
-            private void CreateConstructor(Binder.BaseTypeConfig cTarget)
-            {
-                Expression expr;
                 switch (cTarget.ConstructorType)
                 {
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.NoArguments:
                         {
-                            expr = Expression.New(cTarget.TargetType);
-                            break;
+                            var expr = Expression.New(cTarget.TargetType);
+                            cTarget.Constructor = Expression.Lambda<Func<object>>(expr).Compile();
+                            return cTarget.Constructor();
+//                            return CreateObjectWithConstructor(cTarget.TargetType.GetConstructor(Type.EmptyTypes), constructor => null);
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.Values:
                         {
-                            expr = CreateExpressionConstructor(cTarget.TargetType.GetConstructor(cTarget.ConstructorArguments),
-                                ci => CreateExpressions(ci, cTarget.ConstructorValues()));
-                            break;
+                            ConstructorInfo ci = cTarget.TargetType.GetConstructor(cTarget.ConstructorArguments);
+                            var exprs = CreateExpressions(ci, cTarget.ConstructorValues());
+                            var expr = Expression.New(ci, exprs);
+                            cTarget.Constructor = Expression.Lambda<Func<object>>(expr).Compile();
+                            return cTarget.Constructor();
+//                            return CreateObjectWithConstructor(cTarget.TargetType.GetConstructor(cTarget.ConstructorArguments),
+//                                constructor => CreateArguments(constructor, cTarget.ConstructorValues()));
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.Action:
                         {
-                            expr = CreateExpressionConstructor(FindConstructor(cTarget.TargetType),
-                                ci => ci.GetParameters().Select(p => CreateParameterExpression(p)).ToArray());
-                            break;
+                            var obj = CreateObjectWithConstructor(FindConstructor(cTarget.TargetType), FuncForBuildingParameters());
+                            cTarget.ConstructorAction(obj);
+                            return obj;
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.NoValue:
                         {
-                            expr = CreateExpressionConstructor(FindConstructor(cTarget.TargetType),
-                                ci => ci.GetParameters().Select(p => CreateParameterExpression(p)).ToArray());
-                            break;
+                            return CreateObjectWithConstructor(FindConstructor(cTarget.TargetType), FuncForBuildingParameters());
                         }
                     default:
                         throw new ArgumentException("Unexpected value in Binder.BaseTypeConfig.ConstructorTypeConfig");
                 }
-                cTarget.Constructor = Expression.Lambda<Func<object>>(expr).Compile();
             }
 
             private ConstructorInfo FindConstructor(Type objectType)
@@ -225,11 +206,35 @@ namespace ChelasInjection
                 return chosenConstructor;
             }
 
-            private Expression CreateExpressionConstructor(ConstructorInfo constructor, Func<ConstructorInfo, Expression[]> expressions)
+            private object CreateObjectWithConstructor(ConstructorInfo constructor, Func<ConstructorInfo, object[]> parameters)
             {
                 if (constructor == null)
                     throw new Exceptions.MissingAppropriateConstructorException();
-                return Expression.New(constructor, expressions(constructor));
+                return constructor.Invoke(parameters(constructor));
+            }
+
+            private Func<ConstructorInfo, object[]> FuncForBuildingParameters()
+            {
+                return constructor => constructor.GetParameters().Select(p => GetInstance(GetParameterTypeIndex(p))).ToArray();
+            }
+
+            private object[] CreateArguments(ConstructorInfo constructor, object constructorValuesObject)
+            {
+                return constructor.GetParameters().Select(p => CreateParameterObject(p, constructorValuesObject)).ToArray();
+            }
+
+            private object CreateParameterObject(ParameterInfo param, object constructorValuesObject)
+            {
+                var valuesObjectProperties = constructorValuesObject.GetType().GetProperties();
+                var paramProperty = valuesObjectProperties.FirstWhere(p => p.PropertyType == param.ParameterType);
+                if (paramProperty != null)
+                {
+                    return paramProperty.GetValue(constructorValuesObject, null);
+                }
+                else
+                {
+                    return GetInstance(GetParameterTypeIndex(param));
+                }
             }
 
             private Expression[] CreateExpressions(ConstructorInfo constructor, object constructorValuesObject)
@@ -252,10 +257,17 @@ namespace ChelasInjection
                 }
             }
 
-            private Expression CreateParameterExpression(ParameterInfo param)
+            private TypeIndex GetParameterTypeIndex(ParameterInfo param)
             {
-                return Expression.TypeAs(Expression.Call(Expression.Constant(this), typeof(InstanceManager).GetMethod("GetInstance", BindingFlags.NonPublic | BindingFlags.Instance, Type.DefaultBinder, new Type[] { typeof(TypeIndex) }, null),
-                    GetParameterTypeIndexExpression(param)), param.ParameterType);
+                object[] attrs = param.GetCustomAttributes(false);
+                if (attrs.Length == 1)
+                {
+                    return new TypeIndex() { Type = param.ParameterType, Attribute = attrs[0].GetType() };
+                }
+                else
+                {
+                    return new TypeIndex() { Type = param.ParameterType };
+                }
             }
 
             private Expression GetParameterTypeIndexExpression(ParameterInfo param)
