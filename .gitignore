@@ -8,6 +8,7 @@
 *.pidb
 *.userprefs
 *.trx
+*.dat
 .DS_Store
 deploy/
 build/
