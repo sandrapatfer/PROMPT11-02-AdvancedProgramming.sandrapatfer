@@ -12,10 +12,8 @@ namespace ChelasInjection
             protected BaseTypeConfig m_defaultConfig;
             private Dictionary<Type, BaseTypeConfig> m_configByAttributes;
 
-            public TypeConfigHandler(Binder.BaseTypeConfig config)
-            {
-                m_defaultConfig = config; 
-            }
+            public TypeConfigHandler()
+            {}
             
             public void HandleNewConfig(Binder.BaseTypeConfig config)
             {
@@ -51,7 +49,7 @@ namespace ChelasInjection
                 }
                 else
                 {
-                    throw new Exceptions.UnboundTypeException();
+                    return null;
                 }
             }
         }

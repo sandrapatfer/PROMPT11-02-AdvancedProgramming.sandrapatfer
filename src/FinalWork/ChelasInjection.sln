@@ -7,7 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChelasInjection", "ChelasIn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChelasInjection.Tests", "ChelasInjection.Tests\ChelasInjection.Tests.csproj", "{03A2C558-4A36-4B14-AD60-190FAF5AE27B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChelasInjection.Tests2", "ChelasInjection.Tests2\ChelasInjection.Tests2.csproj", "{C14ED9A4-B424-49B6-9354-95265602249D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{03194F8E-E148-4801-ABFA-4CC9D0DB5343}"
+	ProjectSection(SolutionItems) = preProject
+		ChelasInjection.vsmdi = ChelasInjection.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = ChelasInjection.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -39,6 +51,14 @@ Global
 		{03A2C558-4A36-4B14-AD60-190FAF5AE27B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{03A2C558-4A36-4B14-AD60-190FAF5AE27B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{03A2C558-4A36-4B14-AD60-190FAF5AE27B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C14ED9A4-B424-49B6-9354-95265602249D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

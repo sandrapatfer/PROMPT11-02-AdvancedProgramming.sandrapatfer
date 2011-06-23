@@ -81,7 +81,7 @@ namespace ChelasInjection
                     }
                     else
                     {
-                        return ProtectObjectCreation(tIndex, () => CreateObjectWithConstructor(constructor, c => null), null);
+                        return ProtectObjectCreation(tIndex, () => CreateObjectWithConstructor(constructor, FuncForBuildingParameters()), null);
                     }
                 }
                 else if (tConfig.ActivationSingleton)
@@ -129,15 +129,13 @@ namespace ChelasInjection
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.Action:
                         {
-                            var obj = CreateObjectWithConstructor(FindConstructor(cTarget.TargetType),
-                                constructor => constructor.GetParameters().Select(p => GetInstance(GetParameterTypeIndex(p))).ToArray());
+                            var obj = CreateObjectWithConstructor(FindConstructor(cTarget.TargetType), FuncForBuildingParameters());
                             cTarget.ConstructorAction(obj);
                             return obj;
                         }
                     case Binder.BaseTypeConfig.ConstructorTypeConfig.NoValue:
                         {
-                            return CreateObjectWithConstructor(FindConstructor(cTarget.TargetType),
-                                constructor => constructor.GetParameters().Select(p => GetInstance(GetParameterTypeIndex(p))).ToArray());
+                            return CreateObjectWithConstructor(FindConstructor(cTarget.TargetType), FuncForBuildingParameters());
                         }
                     default:
                         throw new ArgumentException("Unexpected value in Binder.BaseTypeConfig.ConstructorTypeConfig");
@@ -156,7 +154,13 @@ namespace ChelasInjection
 
             private ConstructorInfo FindConstructorMarkedWithDefaultAttr(Type objectType)
             {
-                return objectType.GetConstructors().FirstWhere(c => c.GetCustomAttributes(typeof(DefaultConstructorAttribute), false).Length == 1);
+                var constructors = objectType.GetConstructors().Where(c => c.GetCustomAttributes(typeof(DefaultConstructorAttribute), false).Length == 1);
+                if (constructors.Count() == 0)
+                    return null;
+                else if (constructors.Count() == 1)
+                    return constructors.ElementAt(0);
+                else
+                    throw new Exceptions.MultipleDefaultConstructorAttributesException();
             }
 
             private ConstructorInfo FindConstructorWithMoreBindedObjects(Type objectType)
@@ -194,7 +198,12 @@ namespace ChelasInjection
                     throw new Exceptions.MissingAppropriateConstructorException();
                 return constructor.Invoke(parameters(constructor));
             }
-            
+
+            private Func<ConstructorInfo, object[]> FuncForBuildingParameters()
+            {
+                return constructor => constructor.GetParameters().Select(p => GetInstance(GetParameterTypeIndex(p))).ToArray();
+            }
+
             private object[] CreateArguments(ConstructorInfo constructor, object constructorValuesObject)
             {
                 return constructor.GetParameters().Select(p => CreateParameterObject(p, constructorValuesObject)).ToArray();
@@ -252,7 +261,16 @@ namespace ChelasInjection
                     }
                     else
                     {
-                        return tHandler.AttributeConfig(tIndex.Attribute);
+                        Binder.BaseTypeConfig tConfig = tHandler.AttributeConfig(tIndex.Attribute);
+                        if (tConfig != null)
+                        {
+                            return tConfig;
+                        }
+                        else
+                        {
+                            // use the default config when the constructor has a non existing attribute
+                            return tHandler.DefaultConfig;
+                        }
                     }
                 }
                 else

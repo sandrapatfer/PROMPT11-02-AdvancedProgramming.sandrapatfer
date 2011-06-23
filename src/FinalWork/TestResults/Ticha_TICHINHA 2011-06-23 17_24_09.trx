@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="b832905b-6805-4e59-bad8-7b4504092693" name="Ticha@TICHINHA 2011-06-23 17:24:09" runUser="Tichinha\Ticha" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="9cc0ef20-9937-47d7-8157-49516918ae7e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ticha_TICHINHA 2011-06-23 17_24_09">
+      <DeploymentItem filename="H:\SPF\PROMPT11\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\bin\Debug\ChelasInjection.dll" />
+      <DeploymentItem filename="H:\SPF\PROMPT11\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.SampleTypes\bin\Debug\ChelasInjection.SampleTypes.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-06-23T17:24:09.0015611+01:00" queuing="2011-06-23T17:24:09.1575613+01:00" start="2011-06-23T17:24:09.1887614+01:00" finish="2011-06-23T17:24:09.4383618+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="badb261c-79e1-f2d7-f803-19e335e6a24b">
+      <Execution id="0fe55916-49cd-49eb-8d2f-7d8a95838178" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="badb261c-79e1-f2d7-f803-19e335e6a24b" executionId="0fe55916-49cd-49eb-8d2f-7d8a95838178" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0fe55916-49cd-49eb-8d2f-7d8a95838178" testId="badb261c-79e1-f2d7-f803-19e335e6a24b" testName="ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute" computerName="TICHINHA" duration="00:00:00.0460063" startTime="2011-06-23T17:24:09.1887614+01:00" endTime="2011-06-23T17:24:09.4227618+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0fe55916-49cd-49eb-8d2f-7d8a95838178">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method ChelasInjection.Tests.UnitTest1.ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute did not throw expected exception ChelasInjection.Exceptions.MultipleDefaultConstructorAttributesException.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="6980334b-155b-4349-aeeb-a52798f22f5c" name="Ticha@TICHINHA 2011-06-23 17:12:07" runUser="Tichinha\Ticha" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="9cc0ef20-9937-47d7-8157-49516918ae7e">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="H:\SPF\PROMPT11\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Ticha_TICHINHA 2011-06-23 17_12_07">
+      <DeploymentItem filename="H:\SPF\PROMPT11\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection\bin\Debug\ChelasInjection.dll" />
+      <DeploymentItem filename="H:\SPF\PROMPT11\PROMPT11-02-AdvancedProgramming.sandrapatfer\src\FinalWork\ChelasInjection.SampleTypes\bin\Debug\ChelasInjection.SampleTypes.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-06-23T17:12:07.4738614+01:00" queuing="2011-06-23T17:12:08.6199269+01:00" start="2011-06-23T17:12:08.7209327+01:00" finish="2011-06-23T17:14:00.5843309+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="7" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="6" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="TICHINHA" outcome="Error" timestamp="2011-06-23T17:14:00.5833309+01:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ShouldThrowUnboundExceptionForISomeInterface8Request" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="343e2330-020f-ca29-0724-95104f785584">
+      <Execution id="0ed88045-bddc-4960-a234-efb092deea69" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldThrowUnboundExceptionForISomeInterface8Request" />
+    </UnitTest>
+    <UnitTest name="ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="badb261c-79e1-f2d7-f803-19e335e6a24b">
+      <Execution id="d79b5cb4-9438-4852-b9e6-8b6f0a219f37" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute" />
+    </UnitTest>
+    <UnitTest name="ShouldReturnSomeInterface7And8RedForSomeInterface8RequestWhenSelectionAttributeIsdefined" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="0fb9d857-b22e-831c-2b38-70d77b06e36b">
+      <Execution id="8d12b354-36ea-4cce-85a1-597303dc70fd" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldReturnSomeInterface7And8RedForSomeInterface8RequestWhenSelectionAttributeIsdefined" />
+    </UnitTest>
+    <UnitTest name="ShouldChooseSomeInterface10RedImplementationForDependencyOnSomeClass11" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="f9b93fa6-b71a-f71d-284d-5bec026536ee">
+      <Execution id="a7c9ecf3-7153-4fa9-b3f6-b33713f1fd9b" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldChooseSomeInterface10RedImplementationForDependencyOnSomeClass11" />
+    </UnitTest>
+    <UnitTest name="ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass13WithNotConfiguredBlackAttribute" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="2dbe1cb0-1300-91d9-d83a-4537ac6ebaeb">
+      <Execution id="0b5eae42-53c6-4b4a-b8ec-add5246cc7de" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass13WithNotConfiguredBlackAttribute" />
+    </UnitTest>
+    <UnitTest name="ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass14WithNoArgumentAttribute" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="fb960a69-164e-b826-ab52-fd7d677561d6">
+      <Execution id="d113aa1d-a896-482f-8498-2e313ba68d48" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass14WithNoArgumentAttribute" />
+    </UnitTest>
+    <UnitTest name="ShouldChooseSomeInterface10YellowImplementationForDependencyOnSomeClass12" storage="h:\spf\prompt11\prompt11-02-advancedprogramming.sandrapatfer\src\finalwork\chelasinjection.tests2\bin\debug\chelasinjection.tests2.dll" id="67be36d0-e847-5d39-b115-e4c98c1d269a">
+      <Execution id="50e5d563-213f-49ec-a414-944785626ab3" />
+      <TestMethod codeBase="H:/SPF/PROMPT11/PROMPT11-02-AdvancedProgramming.sandrapatfer/src/FinalWork/ChelasInjection.Tests2/bin/Debug/ChelasInjection.Tests2.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="ChelasInjection.Tests.UnitTest1, ChelasInjection.Tests2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldChooseSomeInterface10YellowImplementationForDependencyOnSomeClass12" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="badb261c-79e1-f2d7-f803-19e335e6a24b" executionId="d79b5cb4-9438-4852-b9e6-8b6f0a219f37" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb960a69-164e-b826-ab52-fd7d677561d6" executionId="d113aa1d-a896-482f-8498-2e313ba68d48" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2dbe1cb0-1300-91d9-d83a-4537ac6ebaeb" executionId="0b5eae42-53c6-4b4a-b8ec-add5246cc7de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0fb9d857-b22e-831c-2b38-70d77b06e36b" executionId="8d12b354-36ea-4cce-85a1-597303dc70fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="343e2330-020f-ca29-0724-95104f785584" executionId="0ed88045-bddc-4960-a234-efb092deea69" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="67be36d0-e847-5d39-b115-e4c98c1d269a" executionId="50e5d563-213f-49ec-a414-944785626ab3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f9b93fa6-b71a-f71d-284d-5bec026536ee" executionId="a7c9ecf3-7153-4fa9-b3f6-b33713f1fd9b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d79b5cb4-9438-4852-b9e6-8b6f0a219f37" testId="badb261c-79e1-f2d7-f803-19e335e6a24b" testName="ShouldThrowMultipleDefaultConstructorAttributesExceptionWhenForSomeClass10BecauseHasMultipleConstructorsWithDefaultConstructorAttribute" computerName="TICHINHA" duration="00:01:51.7843937" startTime="2011-06-23T17:12:08.7999372+01:00" endTime="2011-06-23T17:14:00.5843309+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d79b5cb4-9438-4852-b9e6-8b6f0a219f37">
+    </UnitTestResult>
+    <UnitTestResult executionId="d113aa1d-a896-482f-8498-2e313ba68d48" testId="fb960a69-164e-b826-ab52-fd7d677561d6" testName="ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass14WithNoArgumentAttribute" computerName="TICHINHA" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d113aa1d-a896-482f-8498-2e313ba68d48">
+    </UnitTestResult>
+    <UnitTestResult executionId="0b5eae42-53c6-4b4a-b8ec-add5246cc7de" testId="2dbe1cb0-1300-91d9-d83a-4537ac6ebaeb" testName="ShouldReturnSomeInterface7DefaultForSomeInterface7DependencyOnSomeClass13WithNotConfiguredBlackAttribute" computerName="TICHINHA" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0b5eae42-53c6-4b4a-b8ec-add5246cc7de">
+    </UnitTestResult>
+    <UnitTestResult executionId="8d12b354-36ea-4cce-85a1-597303dc70fd" testId="0fb9d857-b22e-831c-2b38-70d77b06e36b" testName="ShouldReturnSomeInterface7And8RedForSomeInterface8RequestWhenSelectionAttributeIsdefined" computerName="TICHINHA" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8d12b354-36ea-4cce-85a1-597303dc70fd">
+    </UnitTestResult>
+    <UnitTestResult executionId="0ed88045-bddc-4960-a234-efb092deea69" testId="343e2330-020f-ca29-0724-95104f785584" testName="ShouldThrowUnboundExceptionForISomeInterface8Request" computerName="TICHINHA" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0ed88045-bddc-4960-a234-efb092deea69">
+    </UnitTestResult>
+    <UnitTestResult executionId="50e5d563-213f-49ec-a414-944785626ab3" testId="67be36d0-e847-5d39-b115-e4c98c1d269a" testName="ShouldChooseSomeInterface10YellowImplementationForDependencyOnSomeClass12" computerName="TICHINHA" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50e5d563-213f-49ec-a414-944785626ab3">
+    </UnitTestResult>
+    <UnitTestResult executionId="a7c9ecf3-7153-4fa9-b3f6-b33713f1fd9b" testId="f9b93fa6-b71a-f71d-284d-5bec026536ee" testName="ShouldChooseSomeInterface10RedImplementationForDependencyOnSomeClass11" computerName="TICHINHA" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a7c9ecf3-7153-4fa9-b3f6-b33713f1fd9b">
+    </UnitTestResult>
+  </Results>
+</TestRun>

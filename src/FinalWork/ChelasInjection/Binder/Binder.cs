@@ -44,14 +44,11 @@ namespace ChelasInjection
         {
             if (m_activeConfigSourceType != null)
             {
-                if (m_bindingTypes.ContainsKey(m_activeConfigSourceType))
+                if (!m_bindingTypes.ContainsKey(m_activeConfigSourceType))
                 {
-                    m_bindingTypes[m_activeConfigSourceType].HandleNewConfig(m_activeConfig);
+                    m_bindingTypes.Add(m_activeConfigSourceType, new TypeConfigHandler());
                 }
-                else
-                {
-                    m_bindingTypes.Add(m_activeConfigSourceType, new TypeConfigHandler(m_activeConfig));
-                }
+                m_bindingTypes[m_activeConfigSourceType].HandleNewConfig(m_activeConfig);
             }
         }
 
