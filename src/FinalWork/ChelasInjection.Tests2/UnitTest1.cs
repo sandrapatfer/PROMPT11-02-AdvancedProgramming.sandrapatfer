@@ -9,6 +9,7 @@ namespace ChelasInjection.Tests
     using Exceptions;
     using SampleTypes;
     using ChelasInjection.SampleTypes.Attributes;
+using System.Diagnostics;
 
     [TestClass]
     public class UnitTest1
@@ -510,5 +511,45 @@ namespace ChelasInjection.Tests
         }
         #endregion Multiple Binding
 
+                [TestMethod]
+        public void PerformanceCreating100000SomeClass4ShouldBeLessThan4TimesNormalNew()
+        {
+            // Arrange
+            var newClock = new Stopwatch();
+            var diClock = new Stopwatch();
+
+
+            ISomeInterface3 localVar = null;
+
+            //Exludes the first that builds Expressiol call
+            localVar = _injector.GetInstance<ISomeInterface3>();
+            diClock.Start();
+            for (int i = 0; i < (100000 - 1); i++)
+            {
+                localVar = _injector.GetInstance<ISomeInterface3>();
+            }
+            diClock.Stop();
+
+            Assert.IsNotNull(localVar);
+
+            // Act
+            newClock.Start();
+            
+
+            for (int i = 0; i < (100000 -1); i++)
+            {
+                var i1 = new SomeInterface1Impl();
+                var i2 = new SomeInterface2Impl(i1);
+                localVar = new SomeInterface3Impl(10,i2,i1,"SLB");
+            }
+            newClock.Stop();
+
+            var objectsCountStop = GC.CollectionCount(0);
+
+            Assert.IsNotNull(localVar);
+
+            //Assert
+            Assert.AreEqual((float) diClock.ElapsedTicks/(float) newClock.ElapsedTicks, 4.0);
+        }
     }
 }

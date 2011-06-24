@@ -26,7 +26,7 @@ namespace ChelasInjection.Tests
         /// </summary>
         protected override void InternalConfigure() {
                 Bind<ISomeInterface2,SomeInterface2Impl>().WithActivation.PerRequest().InitializeObjectWith(o => { o.SomeInitializatonMethod(); o.SomeStr = "Initialized"; });
-                Bind<ISomeInterface3, SomeInterface3Impl>().WithNoArgumentsConstructor().WithActivation.Singleton().
+                Bind<ISomeInterface3, SomeInterface3Impl>().WithNoArgumentsConstructor().//WithActivation.Singleton().
                 WithConstructor(typeof(int), typeof(ISomeInterface2), typeof(ISomeInterface1), typeof(string)).
                 WithValues(() => new { p1 = 12, p3 = "SLB" });
                 Bind<ISomeInterface1, SomeInterface1Impl>().WithNoArgumentsConstructor();
