@@ -16,10 +16,6 @@ using System.Diagnostics;
     {
         private Injector _injector = new Injector(new MyBinder());
 
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
         #region Instance creation
 
         [TestMethod]
@@ -511,7 +507,7 @@ using System.Diagnostics;
         }
         #endregion Multiple Binding
 
-                [TestMethod]
+        [TestMethod]
         public void PerformanceCreating100000SomeClass4ShouldBeLessThan4TimesNormalNew()
         {
             // Arrange
@@ -550,6 +546,13 @@ using System.Diagnostics;
 
             //Assert
             Assert.AreEqual((float) diClock.ElapsedTicks/(float) newClock.ElapsedTicks, 4.0);
+        }
+
+        [TestMethod]
+        public void TestMyPlugIn()
+        {
+            var obj = _injector.GetInstance<INew1>();
+            Assert.AreEqual(3, obj.TheInt);
         }
     }
 }

@@ -15,51 +15,99 @@ namespace ChelasInjection
             public Type Attribute;
         }
 
-        private class InstanceManager
+        class InstanceManager
         {
             private Binder m_binder;
             private List<TypeIndex> m_typeContructionPath = new List<TypeIndex>();
+            private Dictionary<TypeIndex, object> m_singletonList = new Dictionary<TypeIndex, object>();
+            private Dictionary<TypeIndex, object> m_currentCallObjectList;
             private Dictionary<Type, Func<object>> m_notBindedConstructorList = new Dictionary<Type,Func<object>>();
-            IActivationPlugIn m_defaultActivationObject = PerRequestInstanceManager.Singleton;
 
             public InstanceManager(Binder binder)
             {
                 this.m_binder = binder;
             }
 
+            public T GetInstance<T>()
+            {
+                m_currentCallObjectList = new Dictionary<TypeIndex, object>();
+                return (T)GetInstance(new TypeIndex() { Type = typeof(T) });
+            }
+
+            public T GetInstance<T, TA>()
+            {
+                m_currentCallObjectList = new Dictionary<TypeIndex, object>();
+                return (T)GetInstance(new TypeIndex() { Type = typeof(T), Attribute = typeof(TA) });
+            }
+
             internal object GetInstance(TypeIndex tIndex)
             {
-                //TODO fazer isto com uma var constructor e destructor
-                StartGetInstance(tIndex);
-                object instance;
+                // a type already created is always returned
+                if (m_currentCallObjectList.ContainsKey(tIndex))
+                    return m_currentCallObjectList[tIndex];
+
+                // a type configured as singleton always returns the same object, independently of the configuration
                 Binder.BaseTypeConfig cTarget = GetBinderConfig(tIndex);
-                if (cTarget != null && cTarget.ActivationObject != null)
+                if (cTarget != null && cTarget.ActivationSingleton)
                 {
-                     instance = cTarget.ActivationObject.GetInstance(tIndex);
+                    if (m_singletonList.ContainsKey(tIndex))
+                    {
+                        return m_singletonList[tIndex];
+                    }
+                }
+
+                // try to resolve the type from the custom resolvers
+                object resolvedObject = m_binder.ResolveType(tIndex.Type);
+                if (resolvedObject != null)
+                {
+                    CheckConfigForObject(tIndex, cTarget, resolvedObject);
                 }
                 else
                 {
-                    instance = m_defaultActivationObject.GetInstance(tIndex);
-                }
-                if (instance == null)
-                {
-                    instance = CreateInstance(tIndex, cTarget);
-                    if (cTarget != null && cTarget.ActivationObject != null)
+                    if (cTarget == null)
                     {
-                        cTarget.ActivationObject.NewInstance(tIndex, instance);
+                        // for not binded types, find the most suitable constructor
+                        if (!m_notBindedConstructorList.ContainsKey(tIndex.Type))
+                        {
+                            ConstructorInfo constructor = FindConstructor(tIndex.Type);
+                            if (constructor == null)
+                            {
+                                throw new Exceptions.UnboundTypeException();
+                            }
+                            else
+                            {
+                                var expr = CreateExpressionConstructor(constructor,
+                                    ci => ci.GetParameters().Select(p => CreateParameterExpression(p)).ToArray());
+                                m_notBindedConstructorList.Add(tIndex.Type, Expression.Lambda<Func<object>>(expr).Compile());
+                            }
+                        }
+                        return ProtectObjectCreation(tIndex, () => m_notBindedConstructorList[tIndex.Type](), null);
                     }
                     else
                     {
-                        m_defaultActivationObject.NewInstance(tIndex, instance);
+                        // create the object from the binded configuration
+                        resolvedObject = GetInstanceFromConfig(tIndex, cTarget);
                     }
                 }
-                StopGetInstance(tIndex);
-                return instance;
+
+                m_currentCallObjectList.Add(tIndex, resolvedObject);
+                return resolvedObject;
             }
 
-            private void StartGetInstance(TypeIndex tIndex)
+            private object GetInstanceFromConfig(TypeIndex tIndex, Binder.BaseTypeConfig tConfig)
             {
-                // TODO devia have uma maneira do exists não ser assim
+                if (tConfig.ActivationSingleton)
+                {
+                    return ProtectObjectCreation(tIndex, () => CreateObject(tConfig), obj => m_singletonList.Add(tIndex, obj));
+                }
+                else
+                {
+                    return ProtectObjectCreation(tIndex, () => CreateObject(tConfig), null);
+                }
+            }
+
+            private object ProtectObjectCreation(TypeIndex tIndex, Func<object> creationFunc, Action<object> additionalAction)
+            {
                 if (m_typeContructionPath.Exists(t => t.Type == tIndex.Type && t.Attribute == tIndex.Attribute))
                 {
                     throw new Exceptions.CircularDependencyException();
@@ -68,58 +116,29 @@ namespace ChelasInjection
                 {
                     m_typeContructionPath.Add(tIndex);
                 }
-            }
 
-            private void StopGetInstance(TypeIndex tIndex)
-            {
+                object obj = creationFunc();
+                if (additionalAction != null)
+                    additionalAction(obj);
+
                 m_typeContructionPath.Remove(tIndex);
+                
+                return obj;
             }
 
-
-            private object CreateInstance(TypeIndex tIndex, Binder.BaseTypeConfig cTarget)
+            private object CreateObject(Binder.BaseTypeConfig cTarget)
             {
-                // try to resolve the type from the custom resolvers
-                object resolvedObject = m_binder.ResolveType(tIndex.Type);
-                if (resolvedObject != null)
+                if (cTarget.Constructor == null)
                 {
-                    CheckConfigForObject(cTarget, resolvedObject);
-                    return resolvedObject;
+                    CreateConstructor(cTarget);
                 }
 
-                if (cTarget == null)
+                var obj = cTarget.Constructor();
+                if (cTarget.ConstructorType == Binder.BaseTypeConfig.ConstructorTypeConfig.Action)
                 {
-                    // for not binded types, find the most suitable constructor
-                    if (!m_notBindedConstructorList.ContainsKey(tIndex.Type))
-                    {
-                        ConstructorInfo constructor = FindConstructor(tIndex.Type);
-                        if (constructor == null)
-                        {
-                            throw new Exceptions.UnboundTypeException();
-                        }
-                        else
-                        {
-                            var expr = CreateExpressionConstructor(constructor,
-                                ci => ci.GetParameters().Select(p => CreateParameterExpression(p)).ToArray());
-                            m_notBindedConstructorList.Add(tIndex.Type, Expression.Lambda<Func<object>>(expr).Compile());
-                        }
-                    }
-                    return m_notBindedConstructorList[tIndex.Type]();
+                    cTarget.ConstructorAction(obj);
                 }
-                else
-                {
-                        // create the object from the binded configuration
-                    if (cTarget.Constructor == null)
-                    {
-                        CreateConstructor(cTarget);
-                    }
-
-                    var obj = cTarget.Constructor();
-                    if (cTarget.ConstructorType == Binder.BaseTypeConfig.ConstructorTypeConfig.Action)
-                    {
-                        cTarget.ConstructorAction(obj);
-                    }
-                    return obj;
-                }
+                return obj;
             }
 
             private void CreateConstructor(Binder.BaseTypeConfig cTarget)
@@ -256,10 +275,14 @@ namespace ChelasInjection
                 return Expression.MemberInit(exprNew, bindings);
             }
 
-            private void CheckConfigForObject(Binder.BaseTypeConfig tConfig, object resolvedObject)
+            private void CheckConfigForObject(TypeIndex tIndex, Binder.BaseTypeConfig tConfig, object resolvedObject)
             {
                 if (tConfig == null)
                     return;
+                if (tConfig.ActivationSingleton)
+                {
+                    m_singletonList.Add(tIndex, resolvedObject);
+                }
                 if (tConfig.ConstructorType == Binder.BaseTypeConfig.ConstructorTypeConfig.Action)
                 {
                     tConfig.ConstructorAction(resolvedObject);

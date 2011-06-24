@@ -3,17 +3,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C14ED9A4-B424-49B6-9354-95265602249D}</ProjectGuid>
+    <ProjectGuid>{6666CD41-C05E-43B4-B43E-B41B5871E8DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChelasInjection.Tests2</RootNamespace>
-    <AssemblyName>ChelasInjection.Tests2</AssemblyName>
+    <RootNamespace>ChelasInjection</RootNamespace>
+    <AssemblyName>ChelasInjection</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,35 +31,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
-      <Visible>False</Visible>
-    </CodeAnalysisDependentAssemblyPaths>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MyBinder.cs" />
-    <Compile Include="MyCustomResolver.cs" />
-    <Compile Include="MyPlugIn.cs" />
+    <Compile Include="Binder\BaseTypeConfig.cs" />
+    <Compile Include="Binder\Binder.cs" />
+    <Compile Include="Binder\TypeConfigHandler.cs" />
+    <Compile Include="DefaultConstructorAttribute.cs" />
+    <Compile Include="Exceptions\ChelasInjectionException.cs" />
+    <Compile Include="Exceptions\CircularDependencyException.cs" />
+    <Compile Include="Exceptions\MissingAppropriateConstructorException.cs" />
+    <Compile Include="Exceptions\DuplicateConfigurationException.cs" />
+    <Compile Include="Exceptions\MultipleBindException.cs" />
+    <Compile Include="Exceptions\MultipleDefaultConstructorAttributesException.cs" />
+    <Compile Include="Exceptions\UnboundTypeException.cs" />
+    <Compile Include="Interfaces\IActivationBinder.cs" />
+    <Compile Include="Interfaces\IConstructorBinder.cs" />
+    <Compile Include="Injector\Injector.cs" />
+    <Compile Include="Injector\InstanceManager.cs" />
+    <Compile Include="Interfaces\ITypeBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Binder\TypeConfig.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ChelasInjection.SampleTypes\ChelasInjection.SampleTypes.csproj">
-      <Project>{0A9F133C-457E-4A47-A615-59ACB5C970F9}</Project>
-      <Name>ChelasInjection.SampleTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChelasInjection\ChelasInjection.csproj">
-      <Project>{6666CD41-C05E-43B4-B43E-B41B5871E8DB}</Project>
-      <Name>ChelasInjection</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -64,22 +64,18 @@ namespace ChelasInjection
 
             #region IActivationBinder<T> Members
 
-            public IActivationPlugIn ActivationPlugIn
+            public ITypeBinder<T> PerRequest()
             {
-                set
-                {
-                    ActivationObject = value;
-                }
+                //TODO perguntar se esta activacao é mesmo suposto ser igual
+                m_activationType = ActivationType.PerRequest;
+                return this;
             }
 
-            public ITypeBinder<T> GetCurrentTypeBinder
+            public ITypeBinder<T> Singleton()
             {
-                get
-                {
-                    return this;
-                }
+                m_activationType = ActivationType.Singleton;
+                return this;
             }
-
 
             #endregion
         }

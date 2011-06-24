@@ -8,9 +8,8 @@ namespace ChelasInjection
 
     public abstract partial class Binder
     {
-        public void Configure(IPlugInController plugInCtrl)
+        public void Configure()
         {
-            m_plugInCtrl = plugInCtrl;
             m_activeConfigSourceType = null;
             m_activeConfig = null;
             InternalConfigure();
@@ -22,7 +21,6 @@ namespace ChelasInjection
         Dictionary<Type, TypeConfigHandler> m_bindingTypes = new Dictionary<Type, TypeConfigHandler>();
         Type m_activeConfigSourceType;
         BaseTypeConfig m_activeConfig;
-        IPlugInController m_plugInCtrl;
 
         public ITypeBinder<Target> Bind<Source, Target>()
         {
@@ -51,7 +49,6 @@ namespace ChelasInjection
                     m_bindingTypes.Add(m_activeConfigSourceType, new TypeConfigHandler());
                 }
                 m_bindingTypes[m_activeConfigSourceType].HandleNewConfig(m_activeConfig);
-                m_plugInCtrl.NewPlugIn(m_activeConfig.ActivationObject);
             }
         }
 

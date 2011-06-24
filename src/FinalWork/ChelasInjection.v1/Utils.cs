@@ -5,20 +5,8 @@ using System.Text;
 
 namespace ChelasInjection
 {
-    public static class Utils
+    static class Utils
     {
-        public static ITypeBinder<T> Singleton<T>(this IActivationBinder<T> typeBinder)
-        {
-            typeBinder.ActivationPlugIn = Injector.SingletonInstanceManager.Singleton;
-            return typeBinder.GetCurrentTypeBinder;
-        }
-
-        public static ITypeBinder<T> PerRequest<T>(this IActivationBinder<T> typeBinder)
-        {
-            typeBinder.ActivationPlugIn = Injector.PerRequestInstanceManager.Singleton;
-            return typeBinder.GetCurrentTypeBinder;
-        }
-
         public static T FirstWhere<T>(this IEnumerable<T> seq, Func<T, bool> predicate)
         {
             foreach (var t in seq)

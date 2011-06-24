@@ -2,7 +2,7 @@
 {
     public interface IActivationBinder<T>
     {
-        ITypeBinder<T> PerRequest();
-        ITypeBinder<T> Singleton();
+        IActivationPlugIn ActivationPlugIn { set; }
+        ITypeBinder<T> GetCurrentTypeBinder { get; }
     }
 }
