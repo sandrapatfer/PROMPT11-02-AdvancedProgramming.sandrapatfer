@@ -9,12 +9,18 @@ namespace ChelasInjection
 {
     partial class Injector
     {
+        /// <summary>
+        /// Indexer of a type
+        /// </summary>
         public struct TypeIndex
         {
             public Type Type;
             public Type Attribute;
         }
 
+        /// <summary>
+        /// Auxiliary class for managing the creation of instances
+        /// </summary>
         private class InstanceManager
         {
             private Binder m_binder;

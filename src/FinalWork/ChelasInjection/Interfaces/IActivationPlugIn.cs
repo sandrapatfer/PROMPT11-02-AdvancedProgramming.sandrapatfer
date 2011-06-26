@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ChelasInjection
 {
+    /// <summary>
+    /// Interface for each plug in
+    /// </summary>
     public interface IActivationPlugIn
     {
         void Init(IPlugInEvents eventController);

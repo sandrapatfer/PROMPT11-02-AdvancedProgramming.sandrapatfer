@@ -2,6 +2,10 @@
 
 namespace ChelasInjection
 {
+    /// <summary>
+    /// Interface to configure a type configuration binding
+    /// </summary>
+    /// <typeparam name="T">Type being configured</typeparam>
     public interface ITypeBinder<T>
     {
         IConstructorBinder<T> WithConstructor(params Type[] constructorArguments);

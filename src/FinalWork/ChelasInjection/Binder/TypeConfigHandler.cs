@@ -7,6 +7,9 @@ namespace ChelasInjection
 {
     public partial class Binder
     {
+        /// <summary>
+        /// Auxiliary class to gather the configurations for each type in the binder
+        /// </summary>
         internal class TypeConfigHandler
         {
             protected BaseTypeConfig m_defaultConfig;

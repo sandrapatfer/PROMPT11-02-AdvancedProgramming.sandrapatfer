@@ -7,6 +7,11 @@ namespace ChelasInjection
 {
     partial class Binder
     {
+        /// <summary>
+        /// Class that implements all the methods of the type configuration interfaces, by setting the configuration properties in
+        /// the BaseTypeConfig parent class
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         class TypeConfig<T> : BaseTypeConfig, ITypeBinder<T>, IConstructorBinder<T>, IActivationBinder<T>
         {
             public TypeConfig(Type t)

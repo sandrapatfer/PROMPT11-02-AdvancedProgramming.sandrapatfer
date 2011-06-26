@@ -7,6 +7,9 @@ namespace ChelasInjection
 {
     partial class Injector
     {
+        /// <summary>
+        /// Plug In for handling the instances created by request
+        /// </summary>
         public class PerRequestInstanceManager : IActivationPlugIn
         {
             private Dictionary<TypeIndex, object> m_currentCallObjectList;

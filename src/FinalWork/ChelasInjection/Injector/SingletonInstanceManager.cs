@@ -7,6 +7,9 @@ namespace ChelasInjection
 {
     partial class Injector
     {
+        /// <summary>
+        /// Plug In for handling the instances created in singleton mode
+        /// </summary>
         public class SingletonInstanceManager : IActivationPlugIn
         {
             private Dictionary<TypeIndex, object> m_singletonList = new Dictionary<TypeIndex, object>();

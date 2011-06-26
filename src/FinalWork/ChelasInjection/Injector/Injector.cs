@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace ChelasInjection
 {
-    public partial class Injector : IPlugInController, IPlugInEvents
+    /// <summary>
+    /// The Injector is responsible for handling the GetInstance requests
+    /// Also provides events for the starting and ending of each request to the plug ins
+    /// </summary>
+    public partial class Injector : IPlugInEvents
     {
         private Binder _myBinder;
         private InstanceManager _myInstanceManager;
@@ -11,7 +15,8 @@ namespace ChelasInjection
         public Injector(Binder myBinder)
         {
             _myBinder = myBinder;
-            _myBinder.Configure(this);
+            _myBinder.NewPlugIn += new NewPlugInHandler(_myBinder_NewPlugIn);
+            _myBinder.Configure();
             _myInstanceManager = new InstanceManager(_myBinder);
             m_plugInList.ForEach(p => p.Init(this));
         }
@@ -41,12 +46,9 @@ namespace ChelasInjection
             throw new NotImplementedException();
         }
 
-
-        #region IPlugInController Members
-
         private List<IActivationPlugIn> m_plugInList = new List<IActivationPlugIn>();
 
-        public void NewPlugIn(IActivationPlugIn plugIn)
+        void _myBinder_NewPlugIn(Binder sender, IActivationPlugIn plugIn)
         {
             if (plugIn != null)
             {
@@ -56,8 +58,6 @@ namespace ChelasInjection
                 }
             }
         }
-
-        #endregion
 
         #region IPlugInEvents Members
 
