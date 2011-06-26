@@ -35,7 +35,6 @@ namespace ChelasInjection
 
             internal object GetInstance(TypeIndex tIndex)
             {
-                //TODO fazer isto com uma var constructor e destructor
                 StartGetInstance(tIndex);
                 object instance;
                 Binder.BaseTypeConfig cTarget = GetBinderConfig(tIndex);
