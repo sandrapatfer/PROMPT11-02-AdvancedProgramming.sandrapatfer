@@ -64,8 +64,7 @@ namespace ChelasInjection
 
             private void StartGetInstance(TypeIndex tIndex)
             {
-                // TODO devia have uma maneira do exists não ser assim
-                if (m_typeContructionPath.Exists(t => t.Type == tIndex.Type && t.Attribute == tIndex.Attribute))
+                if (m_typeContructionPath.Contains(tIndex))
                 {
                     throw new Exceptions.CircularDependencyException();
                 }
@@ -112,7 +111,7 @@ namespace ChelasInjection
                 }
                 else
                 {
-                        // create the object from the binded configuration
+                    // create the object from the binded configuration
                     if (cTarget.Constructor == null)
                     {
                         CreateConstructor(cTarget);
@@ -207,7 +206,10 @@ namespace ChelasInjection
                         chosenConstructor = constructor;
                     }
                 }
-                //TODO excepcao se nao existir
+                if (chosenConstructor == null)
+                {
+                    throw new Exceptions.UnboundTypeException();
+                }
                 return chosenConstructor;
             }
 
